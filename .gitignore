@@ -8,3 +8,6 @@ node_modules/
 .github/
 cloudinary_python.txt
 kaggle.json
+inputs/carlosrunner/pizza-not-pizza/pizza_not_pizza/test
+inputs/carlosrunner/pizza-not-pizza/pizza_not_pizza/train
+keep_active.py
