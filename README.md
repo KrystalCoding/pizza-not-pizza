@@ -342,53 +342,43 @@ The model's training data is drawn from the "Pizza or Not Pizza" dataset availab
 
 ## Dashboard Design (Streamlit App User Interface)
 
+Our project dashboard consists of several pages that provide insights into the Pizza-Not-Pizza image classification system. Let's explore each page:
+
 ### Page 1: Quick Project Summary
-- Quick project summary
-    - General Information:
-        - Powdery mildew is a parasitic fungal disease caused by Podosphaera clandestina in cherry trees. When the fungus begins to take over the plants, a layer of mildew made up of many spores forms across the top of the leaves. The disease is particularly severe on new growth, can slow down the growth of the plant and can infect fruit as well, causing direct crop loss.
-        - Visual criteria used to detect infected leaves are light-green, circular lesion on either leaf surface and later on a subtle white cotton-like growth develops in the infected area on either leaf surface and on the fruits thus reducing yield and quality."
-- Project Dataset
-The available dataset provided by Farmy & Foody contains 4208 featured photos of single cherry leaves against a neutral background. The leaves are either healthy or infested by cherry powdery mildew.
-- Business requirements:
-    1. The client is interested to have a study to visually differentiate between a parasite-contained and uninfected leaf.
-    2. The client is interested in telling whether a given leaf contains a powdery mildew parasite or not.
-    3. The client is interested in obtaining a prediction report of the examined leaves. 
-- Link to this Readme.md file for additional information about the project.
+- Quick Project Summary:
+    In this section, we provide an overview of the project, its objectives, and the importance of the Pizza-Not-Pizza image classification system. We highlight the business requirements and the dataset used for the project.
+
+![Page1](INSERT IMAGE)
 
 [Back to top](#table-of-contents)
 
-### Page 2: leaves Visualizer
-It will answer business requirement #1
-- Checkbox 1 - Difference between average and variability image
-- Checkbox 2 - Differences between average parasitised and average uninfected leaves
-- Checkbox 3 - Image Montage
-- Link to this Readme.md file for additional information about the project.
+### Pizza Visualizer
+This page focuses on visually differentiating pizza images from other types of food. We display the difference between average and variability images for pizza and not-pizza categories. We also present a comparison of average images and offer an image montage for a better visual understanding.
+
+![Page2](INSERT IMAGE)
 
 [Back to top](#table-of-contents)
 
-### Page 3: Powdery mildew Detector
-- Business requirement #2 and #3 information - "The client is interested in telling whether a given leaf is infected with powdery mildew or not and obtaining a downloadable report of the examined leaves."
-- Link to download a set of parasite-contained and uninfected leaf images for live prediction on [Kaggle](https://www.kaggle.com/datasets/codeinstitute/cherry-leaves)
-- User Interface with a file uploader widget. The user can upload multiple cherry leaves images. It will display the image, a barplot of the visual representation of the prediction and the prediction statement, indicating if the leaf is infected or not with powdery mildew and the probability associated with this statement.
-- Table with the image name and prediction results.
-- Download button to download the report in a ```.csv``` format. 
-- Link to this Readme.md file for additional information about the project.
+### Page 3: Pizza Detection
+On this page, users can upload food images to obtain instant predictions about whether they contain pizza or not. We also provide a download link for sample pizza and not-pizza photos.
+
+![Page3](INSERT IMAGE)
 
 [Back to top](#table-of-contents)
   
 ### Page 4: Project Hypothesis and Validation
-- Block for each project hypothesis including statement, explanation, validation and conclusion. See [Hypothesis and validation](#Hypothesis-and-validation)
-- Link to this Readme.md file for additional information about the project.
+In this section, we explore our hypothesis about distinguishing parasitized and uninfected cells visually. We discuss image montages and various studies conducted during the project.
+
+![Page4](INSERT IMAGE)
 
 [Back to top](#table-of-contents)
 
 ### Page 5: ML Performance Metrics
-- Label Frequencies for Train, Validation and Test Sets
-- Dataset percentage distribution among the three sets
-- Model performance - ROC curve
-- Model accuracy - Confusion matrix
-- Model History - Accuracy and Losses of LSTM Model
-- Model evaluation result on Test set
+Here, we present metrics related to the project's performance, including the distribution of labels in the training and test sets. We showcase model training history in terms of accuracy and losses and provide general performance metrics on the test set.
+
+Our dashboard offers a comprehensive view of the Pizza-Not-Pizza image classification system and its applications in the food and beverage industry. Feel free to explore each page to gain deeper insights into this innovative project. [pizza-predictor.herokuapp.com](https://pizza-to-be-or-not-to-be.herokuapp.com/)
+
+![Page5](INSERT IMAGE)
 
 [Back to top](#table-of-contents)
 
@@ -400,7 +390,7 @@ CRISP-DM, which stands for Cross-Industry Standard Process for Data Mining, is a
 
 **Source**: [IBM - crisp overview](https://www.ibm.com/docs/it/spss-modeler/saas?topic=dm-crisp-help-overview)
 
-**This process is documented using the Kanban Board provided by GitHub in this repository project section [Predict Pizza...or not](https://github.com/KrystalCoding/pizza-not-pizza)**
+**This process is documented using the Kanban Board provided by GitHub in this repository project section: [Predict Pizza...or not](https://github.com/KrystalCoding/pizza-not-pizza)**
 
 A kanban board is an agile project management tool designed to help visualize work, limit work-in-progress, and maximize efficiency (or flow). It can help both agile and DevOps teams establish order in their daily work. Kanban boards use cards, columns, and continuous improvement to help technology and service teams commit to the right amount of work, and get it done!
 
@@ -413,15 +403,22 @@ The CRISP-DM process is divided in [sprints](https://www.atlassian.com/agile/scr
 ## Bugs
 
 ### Fixed Bug
-While determining the right hyperparameters for the model to train properly through a *trial and error* process, the accuracy of the validation set was stuck at 0.50000 and presenting high loss. 
 
-![bug](INSERT PHOTO)
+While fine-tuning our "Pizza vs. Not Pizza" image classification model, we encountered a critical bug that was hindering the model's performance.
 
-- ##  
-     - __Description__ : While determining the right hyperparameters for the model to train properly through a *trial and error* process, the accuracy of the validation set was stuck at 0.50000 and presenting high loss. 
-     - __Bug__: Among many reasons that could lead to the model not learning from the dataset, this specific case was due to a mismatch between input labels and expected labels. See [Tensorflow](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#flow_from_directory)
-     - __Fix/Workaround__: The bug was fixed by changing the ```class_mode``` of the datasets from ```binary``` to ```categorical```. ```class_mode``` determines the type of label arrays that are returned. If the output function of the model is expecting ```categorical``` (2D output), labels must be set accordingly.
+- Description: During the iterative process of adjusting hyperparameters and model architecture, we encountered a persistent bug. The bug manifested as the model's training process stalling with erratic validation accuracy and excessive loss values. Despite our efforts to improve the model, it was clear that something needed to be fixed to make it learn effectively.
 
+- Bug Analysis: After in-depth analysis, we identified several issues contributing to the bug. The batch sizes we used were initially too small and then too large, causing instability during training. Additionally, the model architecture, specifically the number of dense layers, was not optimized for the given task. Lack of dropout layers also led to overfitting. These factors combined to impede the model's training progress.
+
+Fix/Workaround: To address the bug, we implemented several adjustments:
+
+- Adjust Batch Size: We first significantly increased and then mildly decreased the batch size, enhancing the model's stability during training.
+- Adjusted Dense Layers: We reconfigured the number and size of dense layers in the model to better suit the complexity of the classification task.
+- Added Dropout Layers: To mitigate overfitting, we introduced dropout layers at critical points in the architecture.
+- Fine-Tuned Hyperparameters: We carefully fine-tuned other hyperparameters such as learning rate to improve training dynamics.
+These fixes collectively resolved the bug and allowed the model to train effectively, ultimately resulting in improved validation accuracy and reduced loss.
+
+This bug fix was a pivotal step in optimizing our "Pizza vs. Not Pizza" image classification model to meet our project's business requirements.
 [Back to top](#table-of-contents)
 
 ## Unfixed Bug
@@ -512,7 +509,6 @@ __You can find the live link to the site here: [Pizza: To Be or Not To Be]()__
 - keras 2.6.0           used for setting model's hyperparamters
 - plotly 5.12.0         used for plotting the model's learning curve 
 - seaborn 0.11.0        used for plotting the model's confusion matrix
-- streamlit             used for creating and sharing this project's interface
 </pre>
 
 [Back to top](#table-of-contents)
