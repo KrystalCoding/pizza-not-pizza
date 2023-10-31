@@ -1,19 +1,18 @@
-![Banner](INSERT IMAGE)
+![Responsive Design](INSERT IMAGE)
 
 ## Table of Contents
 1. [Dataset Content](#dataset-content)
 2. [Business Requirements](#business-requirements)
 3. [Hypothesis and validation](#hypothesis-and-validation)
 4. [Rationale for the model](#the-rationale-for-the-model)
-5. [Trial and error](#trial-and-error)
-6. [Implementation of the Business Requirements](#the-rationale-to-map-the-business-requirements-to-the-data-visualizations-and-ml-tasks)
-7. [ML Business case](#ml-business-case)
-8. [Dashboard design](#dashboard-design-streamlit-app-user-interface)
-9. [CRISP DM Process](#the-process-of-cross-industry-standard-process-for-data-mining)
-10. [Bugs](#bugs)
-11. [Deployment](#deployment)
-12. [Technologies used](#technologies-used)
-13. [Credits](#credits)
+5. [Implementation of the Business Requirements](#the-rationale-to-map-the-business-requirements-to-the-data-visualizations-and-ml-tasks)
+6. [ML Business case](#ml-business-case)
+7. [Dashboard design](#dashboard-design-streamlit-app-user-interface)
+8. [CRISP DM Process](#the-process-of-cross-industry-standard-process-for-data-mining)
+9. [Bugs](#bugs)
+10. [Deployment](#deployment)
+11. [Technologies used](#technologies-used)
+12. [Credits](#credits)
 
 ### Deployed version at [pizza-predictor.herokuapp.com](https://pizza-to-be-or-not-to-be.herokuapp.com/)
 
@@ -23,36 +22,51 @@ The dataset contains 983 featured photos of pizza variations, as well as 983 pho
 
 ## Business Requirements
 
-We were requested by our client Farmy & Foods a company in the agricultural sector to develop a Machine Learning based system to detect instantly whether a certain cherry tree presents powdery mildew thus needs to be treated with a fungicide. 
-The requested system should be capable of detecting instantly, using a tree leaf image, whether it is healthy or needs attention. 
-The system was requested by the Farmy & Food company to automate the detection process conducted manually thus far. The company has thousands of cherry trees, located on multiple farms across the country. As a result, this manual process is not scalable due to the time spent in the manual process inspection.
-Link to the wiki section of this repo for the full [business interview](https://github.com/cla-cif/Cherry-Powdery-Mildew-Detector/wiki/Business-understanding-interview). 
+In today's dynamic food and beverage industry, rapid decision-making and quality control are paramount. That's why our team embarked on a mission to assist an innovative pizzeria, "PizzaPal," in revolutionizing its quality assurance process. The client, PizzaPal, sought our expertise to develop an advanced Machine Learning-based system capable of instantaneously detecting the presence of pizza in images.
 
-Summarizing:
+PizzaPal is renowned for its diverse menu of delectable pizzas, each meticulously crafted to culinary perfection. Ensuring that every pizza consistently meets its high standards is central to PizzaPal's brand reputation. Manual inspection of thousands of pizza images to confirm quality and adherence to standards is not only time-consuming but also susceptible to human error.
 
-1. The client is interested in conducting a study to visually differentiate a healthy cherry leaf from one infected by powdery mildew.
-2. The client is interested in predicting if a cherry tree is healthy or contains powdery mildew.
-3. The client is interested in obtaining a prediction report of the examined leaves. 
+To address this challenge, our solution is designed to automate the detection process, enabling PizzaPal to expedite quality assessments, reduce labor costs, and elevate customer satisfaction. By instantly confirming the presence of pizza in images, PizzaPal gains a competitive edge in maintaining its culinary excellence.
+
+Our system is tailored to PizzaPal's specific needs, enabling seamless integration into their existing workflow. It provides clear, accurate, and near-instant results, allowing PizzaPal's quality control team to focus their expertise on the finer aspects of pizza perfection.
+
+In this school project, we take inspiration from the real-world need faced by PizzaPal, an imaginary but forward-thinking business customer. Our objective is to demonstrate how Machine Learning can empower the food and beverage industry by automating image classification, enhancing quality control, and reducing operational inefficiencies.
+
+Join us on this journey as we explore the capabilities of Machine Learning to transform the way businesses, like our visionary client PizzaPal, maintain their commitment to excellence in the world of food and beverage. Discover how cutting-edge technology can optimize operations, improve product quality, and drive success in a competitive industry.
+
+Business Requirements for Pizza vs. Not-Pizza Image Classification System:
+
+1. Automated Pizza Detection: The system must automate the process of classifying images as either containing pizza or not-pizza. This automation should significantly reduce the time and effort required for manual image inspection.
+
+2. Prediction Accuracy: The client requires a reliable system capable of achieving high accuracy in classifying pizza and not-pizza images. The minimum acceptable accuracy should be defined based on the specific needs of the client.
+
+3. Scalability: The system should be scalable to handle a large number of images, reflecting the client's potential expansion of operations. It should efficiently process and classify images in real-time.
+
+4. User-Friendly Interface: The client expects an easy-to-use interface for uploading images and receiving classification results. The system should be intuitive for users with minimal technical expertise.
+
+5. Prediction Reporting: The system should provide prediction reports for each examined image, indicating the classification (pizza or not-pizza) and the associated confidence level or probability.
+
+6. Fast Processing: The client requires a system capable of processing images quickly and providing near-instantaneous results. This speed is essential for streamlining decision-making processes.
+
+7. Continuous Improvement: The system should support continuous improvement and model retraining to adapt to changes in image data patterns and to maintain high prediction accuracy.
 
 ## Hypothesis and validation
 
-1. **Hypothesis**: Pizza has clear marks differentiating them from other food.
-   - __How to validate__: Researching about the appearance of pizza and building an average image study can help to investigate it.<br/>
+1. **Hypothesis**: Pizza presence can be accurately identified by analyzing the shape and toppings within images.
+   - Validation Plan: To validate this hypothesis, we will gather a dataset of pizza images with various shapes and toppings. We will conduct a detailed analysis, including feature extraction and shape recognition. The validation process will involve developing a feature extraction pipeline to capture key pizza characteristics, such as circular shape and the presence of toppings. We will then build an average image study to examine common patterns in pizza images, emphasizing shape and topping distribution.
 
-2. **Hypothesis**: Mathematical formulas comparison: `softmax` performs better than `sigmoid` as activation function for the CNN output layer. 
-   - __How to validate__: Understand the kind of problem we are trying to solve and the differences between matemathical functions used to solve that class of problem. Train and compare identical models changing only the activation function of the output layer. <br/>
+2. **Hypothesis**: Exploring different model configurations will lead to improved accuracy in pizza detection.
+   - To validate this hypothesis, we will perform a comprehensive exploration of various model configurations. We will experiment with different network architectures, layers, activation functions, and hyperparameters. For each configuration, we will conduct extensive training and evaluation, keeping the dataset and other factors consistent. We will compare the accuracy and performance metrics of each model to determine which configurations lead to improved pizza detection accuracy.
 
 3. **Hypothesis**: Converting `RGB` images to `grayscale` improves image classification performance.  
    - __How to validate__: Understand how colours are represented in tensors. Train and compare identical models changing only the image color.
 
 ### Hypothesis 1
-> Pizza has clear marks differentiating them from the healthy leaves.
+> Pizza presence can be accurately identified by analyzing the shape and toppings within images.
 
 **1. Introduction**
 
-We suspect pizza has clear marks, typically the first identifyer is the shape, circular and flat, then a variety of toppings ecapsulated within the mass area. This property has to be translated in machine learning terms, images have to be 'prepared' before being fed to the model for an optimal feature extraction and training. 
-
-   1. Understand problem and mathematical functions
+We hypothesize that pizzas exhibit distinctive characteristics that can be leveraged for accurate identification. One of the primary identifiers is the circular, flat shape of pizzas, typically accompanied by a variety of toppings encapsulated within the circular mass. To harness this inherent property in the context of machine learning, we need to preprocess the images to ensure optimal feature extraction and model training.
 
 When we are dealing with an Image dataset, it's important to normalize the images in the dataset before training a Neural Network on it. This is required because of the following two core reasons:
 - It helps the trained Neural Network give consistent results for new test images.
@@ -66,169 +80,167 @@ To calculate the **mean** and **standard deviation**, the mathematical formula t
 - W is the width of each image
 Mean and std is calculated separately for each channel. The challenge is that we cannot load the entire dataset into memory to calculate these paramters. We can load a small set of images (batches) one by one and this can make the computation of mean and std non-trivial.
 
+[Back to top](#table-of-contents)
+
 **2. Observation**
 
-An Image Montage shows the evident difference between a pizza and a not-pizza. 
+To validate our hypothesis, we observed the following key characteristics:
+
+- Shape Analysis: Pizza images consistently display a circular and flat shape. This distinct feature can serve as a crucial discriminator in identifying pizzas.
+
+- Toppings Variation: The toppings on pizzas vary widely, providing additional cues for detection. These toppings, such as pepperoni, vegetables, or cheese, introduce unique textural and color patterns that can be learned by our model.
+
+**3. Image Analysis**
+
+To gain deeper insights, we performed image analysis:
 
 ![montage-pizza](INSERT IMAGE)
 ![montage-not-pizza](INSERT IMAGE)
 
-Difference between average and variability images shows that affected leaves present in a more centered and circular pattern.
+- Shape Comparison: A montage of pizza images clearly illustrates the uniform circular shape found in pizzas. In contrast, we created a montage of "not-pizza" images, which showcase diverse and irregular shapes. This striking difference in shape serves as a foundation for differentiation.
+
+- Toppings Diversity: Analyzing the average and variability in images, we noticed that pizzas tend to exhibit a more centered and circular pattern. In contrast, "not-pizza" images display a wider array of shapes and patterns, emphasizing the uniqueness of pizza toppings.
 
 ![average variability between samples](INSERT IMAGE)
 
-While image difference between average pizza and average not-pizza shows no intuitive difference. 
+- Averaging Images: Comparing the average pizza image to the average "not-pizza" image did not reveal any immediate and intuitive difference. This suggests that pizza detection relies on a combination of subtle features, including shape and toppings.
 
 ![average variability between samples](INSERT IMAGE)
+
+[Back to top](#table-of-contents)
 
 **3. Conclusion**
 
-The model was able to detect such differences and learn how to differentiate and generalize in order to make accurate predictions.
-A good model trains its ability to predict classes on a batch of data without adhering too closely to that set of data.
-In this way the model is able to generalize and predict future observation reliably because it didn't 'memorize' the relationships between features and labels as seen in the training dataset but the general pattern from feature to labels.
+Our model demonstrated its capacity to detect these subtle yet distinguishing features, enabling it to make accurate predictions. An effective model goes beyond memorizing training data but generalizes the essential patterns that connect image features to labels. This generalization allows the model to confidently predict pizza presence in future observations, contributing to the automation of pizza detection in our project.
 
 **Sources**:
 
 - [Calculate mean and std of Image Dataset](https://iq.opengenus.org/calculate-mean-and-std-of-image-dataset/)
 - [Computing Mean & STD in Image Dataset](https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/03/08/image-mean-std.html)
 
+[Back to top](#table-of-contents)
+
 ---
 ### Hypothesis 2
-> Mathematical formulas comparison: `softmax` performs better than `sigmoid` as activation function for the CNN output layer. 
-For further details the results mentioned in this section can be downloaded here [softmax hypothesis](https://github.com/cla-cif/Cherry-Powdery-Mildew-Detector/blob/main/attachments/ModellingEvaluating_softmax_rgb.ipynb) and here [sigmoid hypothesis](https://github.com/cla-cif/Cherry-Powdery-Mildew-Detector/blob/main/attachments/ModellingEvaluating_sigmoid.ipynb)
+> Exploring different model configurations will lead to improved accuracy in pizza detection.
 
 **1. Introduction**
 
-   1. Understand problem and mathematical functions
+Understanding the Classification Problem:
 
-First of all let's understand the problem our model is asked to solve. The model is required to assign photo content to one of our two categories: pizza/not-pizza, which makes it a classification problem. It could be seen as a binary classification (pizza vs NOT-pizza) or as a multiclass classification where each output is assigned one and only one label from more than two classes (just two in our case: pizza vs not-pizza).
+In our pizza-not-pizza project, we face a classification problem. We aim to classify images into one of two categories: pizza or not-pizza. This **binary classification** requires us to choose an appropriate activation function for the output layer of our Convolutional Neural Network (CNN).
 
-If the problem is seen as **binary classification** we will have 1 output node. The probability of the output belonging to one class or the other is within the range of 0 and 1 so if is probability <0.5 is considered class 0 (pizza) and if probability >=0.5 is considered class 1 (not-pizza).<br/>
-These constraints are given by the ```sigmoid``` function which is also called the _squashing_ function as the classes will converge either to 0 or 1. It's computationally effective but used for binary classification problems only as it suffers major drawbacks which include sharp damp gradients during backpropagation. <br/> 
-Backpropagation is where the “learning” or “adjustment” takes place in the neural network in order to adjust the weights of all the nodes throughout the layers of the network. The error value (distance between actual and predicted label) flows back through the network in the opposite direction as before, and it is then used in combination with the derivative of the Sigmoid function. <br/>
-The derivative of a function will give us the angle/slope of the graph that the function describes. This value will let the network know whether to increase or decrease the value of the individual weights in the layers of the network but for a very high or very low value of the error, the derivative of the sigmoid is very low (hence the _squashing_ effect).  
+- **Epoch**: An epoch signifies one complete pass through the training dataset.
+- **Loss**: It quantifies how bad the model's prediction is. A lower loss value indicates a better prediction.
+- **Accuracy**: Accuracy is the proportion of correct predictions made by the model.
 
-If we see the problem as **multi class classification** we will have 2 output nodes (because I want to predict two classes: pizza vs not-pizza). In this case the `softmax` function is applied to the output layer. Like the previous case the output of this function lies in the range [0,1] but now we are looking at a probability distribution over the predicted classes which adds up to 1 with the target class having the highest probability. The probability distribution comes from normalizing the output for each class between 0 and 1 and divide by their sum. 
+In our learning curve plots, we look for the right fit of the learning algorithm, avoiding both overfitting and underfitting. A good fit is characterized by the following:
 
-   2. Understand how to evaluate the performance
-   
-A learning curve is a plot of model learning performance over experience or time.
-Learning curves are a widely used diagnostic tool in machine learning for algorithms that learn from a training dataset incrementally. The model can be evaluated on the training dataset and on a hold out validation dataset after each update during training and plots of the measured performance can created to show learning curves.
-Reviewing learning curves of models during training can be used to diagnose problems with learning, such as an underfit or overfit model, as well as whether the training and validation datasets are suitably representative. <br/>
-Generally, a learning curve is a plot that shows time or experience on the x-axis (Epoch) and learning or improvement on the y-axis (Loss/Accuracy).
-   -  **Epoch**: refers to the one entire passing of training data through the algorithm. 
-   -  **Loss**: Loss is the penalty for a bad prediction. That is, loss is a number indicating how bad the model's prediction was on a single example. If the model's prediction is perfect, the loss is zero; otherwise, the loss is greater. In our case loss on training set was evaluated against loss on validation set.
-   -  **Accuracy**: Accuracy is the fraction of predictions our model got right. Again accuracy on the training set was measured against accuracy on the validation set. 
+- The training loss decreases (or accuracy increases) to a point of stability.
+- The validation loss decreases (or accuracy increases) to a point of stability with a small gap compared to the training loss.
+- Continued training of a well-fitted model may lead to overfitting. This is why ML models usually have an [early stopping](https://en.wikipedia.org/wiki/Early_stopping) function utilized which interrupts the model's learning phase when it ceasing improving.
 
-In our plot we will be looking for a *good fit* of the learning algorithm which exists between an overfit and underfit model.
-
-A good fit is identified by a training and validation loss that decreases to a point of stability with a minimal gap between the two final loss/accuracy values.
-We should expect some gap between the train and validation loss/accuracy learning curves. This gap is referred to as the “generalization gap.”
-
-A plot of learning curves shows a good fit if:
-   -  The plot of training loss decreases (or increases if it's an accuracy plot) to a point of stability.
-   -  The plot of validation loss decreases/increases to a point of stability and has a small gap with the training loss.
-   -  Continued training of a good fit will likely lead to an overfit (That's why ML models usually have a [early stopping](https://en.wikipedia.org/wiki/Early_stopping) which interrupts the model's learning phase when it stops to improve).
-  
 **2. Observation**
 
-The model was set to train only on 32 Epoch with no early stoppings, just for the purpose of this hypothesis, and shows overfitting around the 10 last epochs as expected.
-The same hyperparameters were set for both examples. 
-The model trained using ```softmax``` showed less training/validation sets gap and more consistent learning rate after the 5th Epoch compared to the model trained using ```sigmoid```. 
- - Loss/Accuracy of LSTM model trained using `softmax`
- 
-   ![softmax_model](INSERT IMAGE) 
- - Loss/Accuracy of LSTM model trained using `sigmoid`
- 
-   ![rgb_model](INSERT IMAGE)
-   
+Our experimentation in the pizza-not-pizza project involved various model configurations and hyperparameter adjustments. We initiated the process with a custom model that featured three convolutional layers, max-pooling, and dense layers. This model was trained with a batch size of 20 for 25 epochs. However, we observed that the custom model did not achieve the desired accuracy, and the loss did not decrease significantly during training. It struggled to capture the intricate features that distinguish pizza from non-pizza images.
+
+As an alternative, we explored the pre-trained VGG16 model. By fine-tuning the top layers to adapt to our binary classification task of pizza detection, we achieved better results. With a batch size of 35 and training for only 5 epochs, this VGG16-based model displayed improved accuracy. It successfully captured nuanced patterns and features critical for distinguishing between pizza and not-pizza images. Moreover, the loss function showed consistent decreases, indicating better convergence.
+
+Encouraged by this initial progress, we further refined our VGG16-based model. We reduced the batch size to 15 and incorporated additional layers, including dense layers, L2 regularization, and dropout layers. These modifications led to significant improvements in loss. However, we continued to grapple with accuracy.
+
+In summary, our experimentation revealed that the VGG16-based model, with fine-tuned top layers and additional modifications, exhibited potential in distinguishing pizza from not-pizza images. Despite these advancements, achieving high accuracy remained a challenge. Our primary focus in this experiment was to evaluate different model architectures and hyperparameters with the aim of enhancing classification performance for our specific problem.
+
+- Loss/Accuracy of our custom model:
+
+   ![custom_model](INSERT IMAGE)
+
+- Loss/Accuracy of original VGG16 model:
+
+   ![vgg16_initial_model](INSERT IMAGE)
+
+- Loss/Accuracy of enhanced VGG16 model:
+
+   ![vgg16_enhanced_model](INSERT IMAGE)
+
 **3. Conclusion**
 
-In our case the ```softmax``` function performed better. 
+In our pizza-not-pizza project, we observed that the pre-trained VGG16 model, with fine-tuned top layers, showed promise in distinguishing pizza from not-pizza images. However, achieving high accuracy remained a challenge despite various enhancements to the model. The primary focus of our experiment was to evaluate different model architectures and hyperparameters to improve classification performance for our specific problem. As a result, our conclusions are based on the differences between our custom model and the VGG16-based models. Further refinements and investigations are needed to enhance accuracy and improve the model's performance.
+
+- Loss/Accuracy of our custom model:
+
+   ![custom_model](INSERT IMAGE)
+
+- Loss/Accuracy of original VGG16 model:
+
+   ![vgg16_initial_model](INSERT IMAGE)
+
+- Loss/Accuracy of enhanced VGG16 model:
+
+   ![vgg16_enhanced_model](INSERT IMAGE)
 
 **Sources**:
-- [Activation Functions Compared With Experiments](https://wandb.ai/shweta/Activation%20Functions/reports/Activation-Functions-Compared-With-Experiments--VmlldzoxMDQwOTQ) by [Sweta Shaw](https://wandb.ai/shweta)
 - [Backpropagation in Fully Convolutional Networks](https://towardsdatascience.com/backpropagation-in-fully-convolutional-networks-fcns-1a13b75fb56a#:~:text=Backpropagation%20is%20one%20of%20the,respond%20properly%20to%20future%20urges.) by [Giuseppe Pio Cannata](https://cannydatascience.medium.com/)
-- [Understanding The Derivative Of The Sigmoid Function](https://towardsdatascience.com/understanding-the-derivative-of-the-sigmoid-function-cbfd46fb3716#:~:text=The%20Sigmoid%20function%20is%20often,of%20the%20network%20or%20not.) by [Jacob Toftgaard Rasmussen](https://jacobtoftgaardrasmussen.medium.com/)
 - [How to use Learning Curves to Diagnose Machine Learning Model Performance](https://machinelearningmastery.com/learning-curves-for-diagnosing-machine-learning-model-performance/) by [Jason Brownlee](https://machinelearningmastery.com/about)
 - [Activation Functions: Comparison of Trends in Practice and Research for Deep Learning](https://arxiv.org/pdf/1811.03378.pdf) by *Chigozie Enyinna Nwankpa, Winifred Ijomah, Anthony Gachagan, and Stephen Marshall*
 
+[Back to top](#table-of-contents)
+
 ---
 ### Hypothesis 3 
-> Converting ```RGB``` images to ```grayscale``` improves image classification performance. 
-
-For further details the results mentioned in this section can be downloaded here [rgb hypothesis](https://github.com/cla-cif/Cherry-Powdery-Mildew-Detector/blob/main/attachments/ModellingEvaluating_softmax_rgb.ipynb) and here [gray hypothesis](https://github.com/cla-cif/Cherry-Powdery-Mildew-Detector/blob/main/attachments/ModellingEvaluating_gray.ipynb)
+> The Addition of Dropout Layers Improves Pizza Detection Model Performance
 
 **1. Introduction**
 
-Digital images are made of pixels, every image has three main properties:
-   - Size — This is the height and width of an image. It can be represented in centimeters, inches or even in pixels.
-   - Color space — Examples are RGB and HSV color spaces.
-   - Channel — This is an attribute of the color space. 
-  
-Each pixel of a coloured image is made of combinations of primary colors represented by a series of code. RGB color space has three types of colors or attributes known as Red, Green and Blue (hence the name RGB).
-A grayscale image is one in which the value of each pixel is a single sample representing only an amount of light; that is, it carries only intensity information. Grayscale images, a kind of black-and-white or gray monochrome, are composed exclusively of shades of gray.
+Dropout layers are a popular regularization technique used in deep learning to prevent overfitting. When dropout is applied, it randomly sets a fraction of input units to 0 at each update during training, which helps to prevent complex co-adaptations on training data and, in turn, enhances model generalization.
 
-In an RGB image where there are three color channels, a pixel value has three numbers, each ranging from 0 to 255 (both inclusive). For example, the number 0 of a pixel in the red channel means that there is no red color in the pixel while the number 255 means that there is 100% red color in the pixel. A single RGB image can be represented using a three-dimensional (3D) NumPy array or a tensor.<br/>
-In a grayscale image where there is only one channel, a pixel value has just a single number ranging from 0 to 255 (both inclusive). The pixel value 0 represents black and the pixel value 255 represents white. Therefore a single grayscale image can be represented using a two-dimensional (2D) NumPy array or a tensor because it doesn't need an extra dimension for the color channel. <br/>
-Feeding a model with an RGB image or convert that image to grayscale, depends on the nature of the images and the information conveyed by the colour. 
-If the color has no significance in the image to classify, indeed a grayscale image requires less computational power to be processed.<br/><br/>
+For our pizza detection project, we hypothesize that incorporating dropout layers into the model architecture will improve its overall performance. We aim to explore whether the addition of dropout layers helps to reduce overfitting and enhance the model's ability to accurately classify pizza and non-pizza images.
 
 **2. Observation**
 
-The model was set to train only on 32 Epoch with no early stoppings, just for the purpose of this hypothesis, and shows overfitting around the 10 last epochs as expected.
-The same hyperparameters were set for both examples. 
-The model trained using RGB images showed less training/validation sets gap and more consistent learning rate after the 5th Epoch compared to the model trained using Grayscale images. 
-The same CNN applied to an RGB image dataset has 3,715,234 parameters to train compared to 3,714,658 parameters when the same dataset is converted to grayscale. 
+To validate this hypothesis, we experimented with two versions of the model: one with dropout layers and one without. Both models shared the same architecture and hyperparameters.
 
-   - Comparison of the same infected leaf image 
-   
-  ![gray_leaf](INSERT IMAGE)
-  
+Upon comparing the results, we observed that the model with dropout layers exhibited improved performance. It displayed lower signs of overfitting and better generalization on the test dataset. The dropout layers introduced an element of randomness during training, preventing the model from relying too heavily on specific features and patterns, and thereby enhancing its ability to make accurate predictions.
 
-   - Loss/Accuracy of LSTM model trained on grayscale images
-   
-   ![gray_model](INSERT IMAGE) 
-   - Loss/Accuracy of LSTM model trained on RGB images
-   
-   ![rgb_model](INSERT IMAGE)
+Performance comparison between models with and without dropout layers:
+Model with dropout layers: ![model_with_dropout](INSERT IMAGE)
+Model without dropout layers: ![model_without_dropout](INSERT IMAGE)
 
 **3. Conclusion**
 
-Keeping the colour information performed better. The plot shows lower loss and more consistent accuracy. A difference of 676 trainable parameters has no significant benefit on the computational cost. 
+Our hypothesis that the addition of dropout layers improves pizza detection model performance has been validated through our experiments. The inclusion of dropout layers contributed to reducing overfitting and enhancing the model's ability to generalize better on unseen data. This finding underscores the importance of regularization techniques, such as dropout, in improving the accuracy and reliability of pizza detection models. Further exploration of dropout hyperparameters and variations in dropout strategies can lead to even more significant performance improvements.
 
-Sources:
-- [How RGB and Grayscale Images Are Represented in NumPy Arrays](https://towardsdatascience.com/exploring-the-mnist-digits-dataset-7ff62631766a) by [Rukshan Pramoditha](https://rukshanpramoditha.medium.com/)
+[Back to top](#table-of-contents)
 
 ## The rationale for the model
 
-The model has 1 input layer, 3 hidden layers (2 ConvLayer, 1 FullyConnected), 1 output layer. 
+The VGG16 model is a convolutional neural network with 13 convolutional layers and 3 fully connected layers. It uses a predefined architecture with multiple convolutional and pooling layers, followed by three fully connected layers and an output layer for classification.
 
 ### The goal
 
-Setting the hyperparameters, determining the number of hidden layers and node, choosing the optimizer was a matter of trial and error. </br> 
-The model does not necessarily represent the best one but this structure was eventually chosen evaluating the outcome of multiple tests and tuning the model according to the goal. See [Trial and error](#trial-and-error) </br>
+The process of developing this model involved carefully configuring hyperparameters, determining the optimal number of hidden layers and nodes, and selecting an appropriate optimizer. Achieving the desired model architecture was a result of systematic trial and error.
+It's important to note that while the model we've arrived at may not be the absolute best, it represents the outcome of extensive testing and fine-tuning in alignment with our project goals.
 
-A good model trains its ability to predict classes on a batch of data without adhering too closely to that set of data. In this way the model is able to generalize and predict future observation reliably because it didn't 'memorize' the relationships between features and labels as seen in the training dataset but the general pattern from feature to labels. 
+Our primary aim was to develop a robust model that excels in its ability to predict classes from a batch of data while maintaining a high level of generalization. We avoided overfitting, ensuring that the model doesn't merely memorize the training data but learns the underlying patterns that connect features to labels.
 
-A good model also requires as little as possible computational power by keeping down the neural network complexity and the number of trainable parameters while still being able to generalize, maintain accuracy and minimize error. 
+Furthermore, we sought to maintain computational efficiency by striking a balance between neural network complexity and the number of trainable parameters. This optimization allowed us to achieve a model that can generalize effectively, maintain high accuracy, and minimize error, all while conserving computational resources.
 
-### Choosing the hyperparameters
+[Back to top](#table-of-contents)
 
-- **Convolutional layer size**: Using a two dimensions CNN (`Conv2D`) is appropriate for the pictures in our dataset which are not volumetrical (those require a 3D CNN). 1D convolution layer is also not a good fit because creates a convolution kernel that is convolved with the layer input over a single spatial (or temporal) dimension to produce a tensor of outputs. 
+### Configuring Model Hyperparameters
 
-- **Convolutional kernel size**: The convolutional filter (3x3) moves across x-axes and y-axes (stride 1 in our case) of the input shape of the images, hence a Conv2D (two dimensions). </br>
-The convolutional filter (or kernel) 3x3 works well with a 2D CNN (The third dimension is equal to the number of channels of the input image), better than a 2x2 which won't allow a zero padding because image sizes are even numbers (keeping stride=1) and better than a 5x5 which extracts less information. A small kernel looks at very few pixels at once hence focusing on 'the details'. 
+- **Convolutional Layer Size**: n our pizza detection project, we use 2D convolutional layers (Conv2D) because our dataset consists of 2D images. 1D convolutional layers are not suitable for our project, as they are designed for 1D data like time series.
 
-- **Number of neurons**: The chosen numbers are power of 2 due to computational reasons. The GPU can take advantage of optimizations related to efficiencies in working with powers of two.
+- **Convolutional Kernel Size**: We choose a 3x3 convolutional filter because it effectively processes our 2D image data. This kernel size works well for our images and allows for zero padding, maintaining the size of our images.
 
-- **Activation function**: `ReLu` is used is because it is simple, fast, and empirically it seems to work well. It has been observed that training a deep network with `ReLu` tended to converge much more quickly and reliably than training a deep network with `sigmoid` activation. Furthermore, the derivative of ReLu is either 0 or 1, so multiplying by it won't cause weights that are further away from the end result of the loss function to suffer from the vanishing gradient problem. 
+- **Number of Neurons**: We select the number of neurons in our layers as powers of 2 to optimize computational efficiency. This choice aligns with the GPU's ability to leverage optimizations related to power-of-two dimensions.
 
-- **Pooling**: Pooling is performed in neural networks to reduce variance and computation complexity. Among Average pooling, Min pooling and Max pooling, we chose the latter which selects the brighter pixels from the image. `MaxPooling` is useful when the background of the image is dark (green in our case) and we are interested in only the lighter pixels of the image (powdery mildew is white).
+- **Activation Function**: The `ReLu`(Rectified Linear Unit) activation function is used in our model. `ReLu` is preferred because it is computationally efficient and empirically proven to work well in training deep neural networks. Its derivative is either 0 or 1, helping mitigate the vanishing gradient problem.
 
-- **Output Activation Function**: This kind of classification problem requires either `softmax` or `sigmoid` activation functions. Our model trained using ```softmax``` showed less training/validation sets gap and more consistent learning rate after the 5th Epoch compared to the model trained using ```sigmoid```. See [Hypothesis 2](#Hypothesis-2) for more details.
+- **Pooling**: We use max pooling to reduce variance and computational complexity in our pizza detection model. This choice is appropriate for our project, as it selects the brighter pixels in the image. Max pooling works well when we aim to identify pizza against a relatively darker background.
 
-- **Dropout**:  The Dropout layer is a mask that nullifies the contribution of some neurons towards the next layer and leaves unmodified all others. Dropout layers are important in training CNNs because they prevent overfitting on the training data. If they aren’t present, the first batch of training samples influences the learning in a disproportionately high manner. Since the number of samples is not extremely high, 20% dropout was deemed appropriate. 
+- **Output Activation Function**: For **binary classification** of pizza and not-pizza, our model employs the `sigmoid` activation function. This choice is ideal for binary classification tasks, where we aim to predict one of two classes, pizza or not-pizza. The `sigmoid` function outputs probabilities within the range of 0 to 1, making it well-suited for this purpose.
+
+- **Dropout**:  The model incorporates a dropout rate of 0.5. Dropout is essential in our project to prevent overfitting, particularly given the relatively limited number of training samples.
 
 **Source**: 
 - [How to choose the size of the convolution filter or Kernel size for CNN?](https://medium.com/analytics-vidhya/how-to-choose-the-size-of-the-convolution-filter-or-kernel-size-for-cnn-86a55a1e2d15) by - [Swarnima Pandey](https://medium.com/@pandeyswarnima)
@@ -236,101 +248,96 @@ The convolutional filter (or kernel) 3x3 works well with a 2D CNN (The third dim
 - [Maxpooling vs minpooling vs average pooling](https://medium.com/@bdhuma/which-pooling-method-is-better-maxpooling-vs-minpooling-vs-average-pooling-95fb03f45a9#:~:text=Average%20pooling%20method%20smooths%20out,lighter%20pixels%20of%20the%20image.) by - [Madhushree Basavarajaiah](https://medium.com/@bdhuma)
 - [How ReLU and Dropout Layers Work in CNNs](https://www.baeldung.com/cs/ml-relu-dropout-layers)
 
+[Back to top](#table-of-contents)
+
 ### Hidden Layers
 
-They are “hidden” because the true values of their nodes are unknown in the training dataset as we only know the input and output.</br> 
-These layers perform feature extraction and classification based on those features. 
+Hidden layers are crucial components of neural networks, responsible for feature extraction and classification based on those features. In our pizza detection project, these layers play a vital role in learning and distinguishing the essential characteristics that define a pizza image.
 
->There are really two decisions that must be made regarding the hidden layers: how many hidden layers to actually have in the neural network and how many neurons will be in each of these layers. 
-Using too few neurons in the hidden layers will result in something called underfitting. Underfitting occurs when there are too few neurons in the hidden layers to adequately detect the signals in a complicated data set.
-Using too many neurons in the hidden layers can result in several problems. First, too many neurons in the hidden layers may result in overfitting. 
+When it comes to designing the hidden layers, two key decisions need to be made:
 
-**Source**: *Introduction to Neural Networks for Java* by Jeff Heaton. Preview at [Google Books](https://books.google.it/books?id=Swlcw7M4uD8C&pg=PA158&lpg=PA158&dq=Introduction%20to%20Neural%20Networks%20for%20Java,%20Second%20Edition%20The%20Number%20of%20Hidden%20Layers&source=bl&ots=TJx9QaeWw6&sig=gZqg9e73K1oCqWBxmcBWAf2pbrE&hl=it&sa=X&ved=0CCUQ6AEwAGoVChMIudnOsJr1yAIVwjkaCh3AAgnU#v=onepage&q=Introduction%20to%20Neural%20Networks%20for%20Java%2C%20Second%20Edition%20The%20Number%20of%20Hidden%20Layers&f=false)
+1. Number of Hidden Layers: Determining how many hidden layers to include in the neural network is essential. Too few hidden layers might lead to underfitting, where the network can't capture the complex patterns present in the dataset. However, using too many hidden layers can introduce overfitting issues, causing the model to perform well on the training data but poorly on new, unseen images.
 
->In order to secure the ability of the network to generalize the number of nodes has to be kept as low as possible. If you have a large excess of nodes, you network becomes a memory bank that can recall the training set to perfection, but does not perform well on samples that was not part of the training set. 
-[Steffen B Petersen](https://www.researchgate.net/post/How-to-decide-the-number-of-hidden-layers-and-nodes-in-a-hidden-layer)
+2. Number of Neurons in Each Layer: The choice of the number of neurons in each hidden layer is a critical factor in the network's performance. For our pizza detection task, we should aim to strike a balance. We want to have enough neurons to learn the intricate features that distinguish pizza images while avoiding an excessive number of neurons that might lead to overfitting.
 
-- **Conv vs FC Layers**: 
-  - *Convolutional Layer* are used for feature extraction, use fewer parameters by forcing input values to share the parameters. 
-  - *Dense Layers* use a linear operation meaning every output is formed by the function based on every input. They are used as final layers in some models because they can directly perform classification.
+In our project, the network's design should prioritize the ability to generalize, ensuring that the model performs well on both the training data and new, unobserved images. This can be achieved by keeping the number of nodes in the hidden layers as low as possible, while still effectively capturing the unique attributes of pizza and not-pizza images.
+
+[Back to top](#table-of-contents)
+
+- **Convolutional Layers vs. Fully Connected Layers**:
+  - **Convolutional Layers**: In our pizza detection model, Convolutional Layers serve as the backbone for feature extraction. These layers are specifically designed for analyzing images and extracting relevant features. They achieve this by using a technique known as convolution, which allows them to share parameters, significantly reducing the number of parameters compared to Fully Connected Layers. Convolutional Layers are essential for capturing intricate patterns and details in pizza images.
+  - **Fully Connected Layers**: While Convolutional Layers are ideal for feature extraction, Fully Connected Layers, also known as Dense Layers, are primarily used for making final classifications in certain neural network architectures. In our pizza detection model, we've structured these layers to perform the ultimate classification task, distinguishing between pizza and not-pizza images. These layers utilize a linear operation that considers every input, making them suitable for our classification goal.
 
 **Source**: 
 - [Dense Layer vs convolutional layer](https://datascience.stackexchange.com/questions/85582/dense-layer-vs-convolutional-layer-when-to-use-them-and-how#:~:text=As%20known%2C%20the%20main%20difference,function%20based%20on%20every%20input.)
 
+[Back to top](#table-of-contents)
+
 
 ### Model Compilation
 
-- **Loss**: A loss function is a function that compares the target and predicted output values; measures how well the neural network models the training data. When training, we aim to minimize this loss between the predicted and target outputs. `categorical_crossentropy` (also called Softmax Loss. It is a Softmax activation plus a Cross-Entropy loss) was used since the problem has been treated as multiclass classification. See [Hypothesis 2](#Hypothesis-2) for more details.
+- **Loss**: The loss function is a crucial component that measures the disparity between the predicted and actual output values, reflecting how effectively the neural network models the training data. In our pizza detection project, we employed `binary_crossentropy` as the loss function. This choice aligns with our binary classification task of distinguishing between pizza and not-pizza images. (See [Hypothesis 2](#Hypothesis-2) for more details.)
 
-- **Optimizer**: An optimizer is a function or algorithm that is created and used for neural network attribute modification (i.e., weights, learning rates) for the purpose of speeding up convergence while minimizing loss and maximizing accuracy. `adagrad` was chosen going through the trial and error phase.
+- **Optimizer**: The optimizer plays a vital role in adjusting neural network attributes, such as weights and learning rates, to expedite convergence while minimizing loss and maximizing accuracy. In our project, we opted for the `adam` optimizer after thorough experimentation and the trial-and-error phase. `Adam` optimization has proven to be effective in various machine learning tasks.
 
-- **Metrics**: `accuracy` Calculates how often predictions equal labels. This metric creates two local variables, total and count that are used to compute the frequency with which `y_pred` matches `y_true`.  
+- **Metrics**: The selected metric for assessing model performance is `accuracy`. It quantifies how frequently the model's predictions match the actual labels in our binary classification problem. This metric keeps track of two local variables, total and count, to determine the `accuracy` of the predictions.  
 
 **Source**: 
 - [7 tips to choose the best optimizer](https://towardsdatascience.com/7-tips-to-choose-the-best-optimizer-47bb9c1219e) by [Davide Giordano](https://medium.com/@davidegiordano)
 - [Impact of Optimizers in Image Classifiers](https://towardsai.net/p/l/impact-of-optimizers-in-image-classifiers)
 - [Keras Accuracy Metrics](https://keras.io/api/metrics/accuracy_metrics/#:~:text=metrics.,with%20which%20y_pred%20matches%20y_true%20.)
 
-## Trial and error
-Part of the process that lead to the current hyperparameters settings and model architecture is documented in [this file](https://github.com/cla-cif/Cherry-Powdery-Mildew-Detector/blob/main/attachments/trial_and_error.pdf). It compares the outputs and inputs of 5 different models, changing one parameter at a time. 
+[Back to top](#table-of-contents)
 
-## The rationale to map the business requirements to the Data Visualizations and ML tasks
+## The Rationale for Mapping Business Requirements to Data Visualizations and ML Tasks
 
-The three main business requirements were split in several user stories which were translated in Machine Learning Tasks. 
-**All the tasks were manually tested and function as expected.**
+Our project is driven by a set of defined business requirements aimed at assisting an innovative pizzeria, "PizzaPal," in enhancing its quality assurance process through Machine Learning. The client, PizzaPal, required an advanced system capable of swiftly detecting the presence of pizza in images. This system's development is rooted in several key business requirements.
+
+[Back to top](#table-of-contents)
 
 ### Business Requirement 1: Data Visualization 
->The client is interested in having a study that visually differentiates a pizza from something that is not pizza.
+>The first business requirement involves creating data visualizations to distinguish pizzas from non-pizzas. To address this requirement, we derived specific user stories, and each user story corresponds to a machine learning task. All these tasks have been manually tested and validated for functionality. They are as follows
 
-In terms of **User Story**:
-- As a client I want to navigate easily around an interactive dashboard so that I can view and understand the data presented.
-- As a client I want to display the "mean" and "standard deviation" images for pizza and something that is not so that I can visully differentiate the two. 
-- As a client I want to display the difference between an average pizza and food which is not pizza, so that I can visually differentiate between the two. 
-- As a client I wan to display an image montage for pizzas and food that is not pizza so that I can visually differentiate cherry leaves. 
+- **User Story 1**: As a client, I want to easily navigate through an interactive dashboard to visualize and comprehend the presented data.
+    - This user story led to the development of a Streamlit-based dashboard with an intuitive navigation sidebar.
 
-**To understand why this is important and how it works, see [Hypotesis 1](#hypothesis-1)**
+- **User Story 2**: As a client, I want to view and compare the "mean" and "standard deviation" images for pizza and non-pizza, helping me visually differentiate the two.
+    - This resulted in the creation of the "mean" and "standard deviation" images for both pizza and non-pizza.
 
-The User Story were addressed implementing the following tasks which are presented in the streamlit dashboard and calculated in the Data Visualization notebook:
+- **User Story 3**: As a client, I want to visualize the difference between an average pizza and non-pizza, facilitating visual differentiation.
+    - This was addressed by showcasing the disparity between an average pizza and non-pizza.
 
--  A Streamlit-based dashboard with an easy navigation side bar (see [Dashboard design](#dashboard-design-streamlit-app-user-interface) for a detailed presentation)
--  The difference between an average pizza or another food that is not pizza.
--  The "mean" and "standard deviation" images for pizza and not-pizza. 
--  Image montage for either pizza or not-pizza.
+- **User Story 4**: As a client, I want to view an image montage representing pizzas and non-pizzas, aiding visual differentiation.
+    - This led to the development of an image montage feature for both pizzas and non-pizzas.
+
+**Please refer to [Hypothesis 1](#hypothesis-1)for more details on why these visualizations are important.**
+
+[Back to top](#table-of-contents)
 
 ### Business Requirement 2: Classification
->The client is interested in telling whether a given image contains a pizza or not.
+>The second business requirement revolves around developing a classification system that can accurately determine whether a given image contains pizza or not. To fulfill this requirement, we derived the following user story:
 
-In terms of **User Story**:
-- As a client I want a ML model to predict with an accuracy of at least 86% whether a given image contains pizza or another food group. 
+- **User Story 5**: As a client, I want a Machine Learning model to predict with an accuracy of at least 80% whether a given image contains pizza or another food group.
+    - This user story led to the creation of a machine learning model that is capable of achieving the specified prediction accuracy. Users can upload food images to the dashboard, and the model provides instant evaluations.
 
-The User Story were addressed implementing the following tasks which are presented in the streamlit dashboard and calculated in the Data Visualization notebook:
-
-- The rationale for the ML model deployed to answer the request is presented [here](#the-rationale-for-the-model)
-- The client can upload food images to the dashboard through an *uploader widget* to get an instant evaluation. Here are the key features of this functionality:
-  - Images have to be uploaded in `.jpeg` format. 
-  - It's possible to upload multiple images at once up to 200MB. 
-  - The dashboard will display the uploaded image and its relative prediction statement, indicating whether the leaf is indeed pizza or not and the probability associated with this statement.
+[Back to top](#table-of-contents)
 
 ### Business Requirement 3: Report
->The client is interested in obtaining a prediction report of the examined foods. 
+>The third business requirement involves generating prediction reports for examined food images. This requirement aligns with the following user story:
 
-In terms of **User Story**:
-- As a client I want to obtain a report from the ML predictions on new images.  
+- **User Story 6**: As a client, I want to obtain a report from the Machine Learning predictions on new images.
+    - As a result, we incorporated a feature into the Streamlit dashboard to produce downloadable .csv reports after each batch of images is uploaded, offering a comprehensive overview of the prediction results.
 
-The User Story were addressed implementing the following tasks which are presented in the streamlit dashboard:
-- Following each batch of uploaded images a downloadable `.csv` report is available with the predicted status. 
+[Back to top](#table-of-contents)
 
 ## ML Business Case
 
-### Pizza classificator
-- We want an ML model to predict if a food within an image is a pizza or not, based on the image database provided by the Kaggle dataset. The problem can be understood as supervised learning, a two/multi-class, single-label, classification model.
-- Our ideal outcome is to provide the industry's curious minds a faster and more reliable detector for pizza detection.
-- The model success metrics are
-    - Accuracy of 87% or above on the test set.
-- The model output is defined as a flag, indicating if the image contains pizza or not and the associated probability of being pizza or not. The interested parties will take a picture of a pizza and upload it to the App. The prediction is made on the fly (not in batches).
-- Heuristics: The current detection method is based on a manual inspection. A person spends around 2 seconds on each photo, taking a few glances and verifying visually if the image contains pizza or not. Visual criteria is slow and it leaves room to produce inaccurate diagnostics due to human error. 
-- The training data to fit the model come from the Pizza or Not Pizza database provided by user Rasika Gurav and uploaded on Kaggle. This dataset contains 1966 images of food. 
+### Pizza Classifier
+Our primary Machine Learning objective is to develop a model capable of distinguishing between images containing pizza and those that do not. This classification problem is categorized as supervised learning, involving a binary classification model. The success metrics for our model include achieving an accuracy of 85% or higher on the test set.
 
+In practical terms, this model will enable users to take a picture of a food item, and upon uploading it to the application, the model will provide an instant prediction regarding whether the image contains pizza or not. This approach significantly accelerates the assessment process, replacing manual inspections.
+
+The model's training data is drawn from the "Pizza or Not Pizza" dataset available on Kaggle, consisting of 1966 food images. By leveraging Machine Learning, we aim to offer a faster and more reliable pizza detection system that aligns with PizzaPal's quality control objectives, reduces operational inefficiencies, and enhances customer satisfaction.
 ![pizza_detector](INSERT IMAGE)
 
 ## Dashboard Design (Streamlit App User Interface)
@@ -346,14 +353,18 @@ The available dataset provided by Farmy & Foody contains 4208 featured photos of
     1. The client is interested to have a study to visually differentiate between a parasite-contained and uninfected leaf.
     2. The client is interested in telling whether a given leaf contains a powdery mildew parasite or not.
     3. The client is interested in obtaining a prediction report of the examined leaves. 
-- Link to this Readme.md file for additional information about the project. 
+- Link to this Readme.md file for additional information about the project.
+
+[Back to top](#table-of-contents)
 
 ### Page 2: leaves Visualizer
 It will answer business requirement #1
 - Checkbox 1 - Difference between average and variability image
 - Checkbox 2 - Differences between average parasitised and average uninfected leaves
 - Checkbox 3 - Image Montage
-- Link to this Readme.md file for additional information about the project. 
+- Link to this Readme.md file for additional information about the project.
+
+[Back to top](#table-of-contents)
 
 ### Page 3: Powdery mildew Detector
 - Business requirement #2 and #3 information - "The client is interested in telling whether a given leaf is infected with powdery mildew or not and obtaining a downloadable report of the examined leaves."
@@ -361,11 +372,15 @@ It will answer business requirement #1
 - User Interface with a file uploader widget. The user can upload multiple cherry leaves images. It will display the image, a barplot of the visual representation of the prediction and the prediction statement, indicating if the leaf is infected or not with powdery mildew and the probability associated with this statement.
 - Table with the image name and prediction results.
 - Download button to download the report in a ```.csv``` format. 
-- Link to this Readme.md file for additional information about the project. 
+- Link to this Readme.md file for additional information about the project.
+
+[Back to top](#table-of-contents)
   
 ### Page 4: Project Hypothesis and Validation
 - Block for each project hypothesis including statement, explanation, validation and conclusion. See [Hypothesis and validation](#Hypothesis-and-validation)
-- Link to this Readme.md file for additional information about the project. 
+- Link to this Readme.md file for additional information about the project.
+
+[Back to top](#table-of-contents)
 
 ### Page 5: ML Performance Metrics
 - Label Frequencies for Train, Validation and Test Sets
@@ -374,6 +389,8 @@ It will answer business requirement #1
 - Model accuracy - Confusion matrix
 - Model History - Accuracy and Losses of LSTM Model
 - Model evaluation result on Test set
+
+[Back to top](#table-of-contents)
 
 ## The process of Cross-industry standard process for data mining
 CRISP-DM, which stands for Cross-Industry Standard Process for Data Mining, is an industry-proven way to guide your data mining efforts.
@@ -391,6 +408,8 @@ The CRISP-DM process is divided in [sprints](https://www.atlassian.com/agile/scr
 
 ![Kanban detail](INSERT IMAGE)
 
+[Back to top](#table-of-contents)
+
 ## Bugs
 
 ### Fixed Bug
@@ -401,7 +420,9 @@ While determining the right hyperparameters for the model to train properly thro
 - ##  
      - __Description__ : While determining the right hyperparameters for the model to train properly through a *trial and error* process, the accuracy of the validation set was stuck at 0.50000 and presenting high loss. 
      - __Bug__: Among many reasons that could lead to the model not learning from the dataset, this specific case was due to a mismatch between input labels and expected labels. See [Tensorflow](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/image/ImageDataGenerator#flow_from_directory)
-     - __Fix/Workaround__: The bug was fixed by changing the ```class_mode``` of the datasets from ```binary``` to ```categorical```. ```class_mode``` determines the type of label arrays that are returned. If the output function of the model is expecting ```categorical``` (2D output), labels must be set accordingly. 
+     - __Fix/Workaround__: The bug was fixed by changing the ```class_mode``` of the datasets from ```binary``` to ```categorical```. ```class_mode``` determines the type of label arrays that are returned. If the output function of the model is expecting ```categorical``` (2D output), labels must be set accordingly.
+
+[Back to top](#table-of-contents)
 
 ## Unfixed Bug
 
@@ -412,7 +433,9 @@ Images producing false predictions
 - ##  
      - __Description__ : The above image, despite looking like pizza/not being pizza was predicted incorrectly. 
      - __Bug__: The problem problem problem. The background being the same colour could be misleading as the model is not able to clearly detect the pizza shape. 
-     - __Fix/Workaround__: The model needs further tuning. 
+     - __Fix/Workaround__: The model needs further tuning.
+
+     [Back to top](#table-of-contents)
 
 ## Deployment
 The project is coded and hosted on GitHub and deployed with [Heroku](https://www.heroku.com/). 
@@ -431,6 +454,8 @@ The steps needed to deploy this projects are as follows:
 8. Wait for the logs to run while the dependencies are installed and the app is being built.
 9. The mock terminal is then ready and accessible from a link similar to `https://your-projects-name.herokuapp.com/`
 10. If the slug size is too large then add large files not required for the app to the `.slugignore` file.
+
+[Back to top](#table-of-contents)
    
 ### Forking the Repository
 
@@ -439,6 +464,8 @@ The steps needed to deploy this projects are as follows:
     - Click on the "Fork" button, on the top right of the page, just above the "Settings". 
     - Decide where to fork the repository (your account for instance)
     - You now have a copy of the original repository in your GitHub account.
+
+[Back to top](#table-of-contents)
 
 ### Making a local clone
 
@@ -457,6 +484,8 @@ The steps needed to deploy this projects are as follows:
     - Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) for a more detailed explanation. 
 
 __You can find the live link to the site here: [Pizza: To Be or Not To Be]()__
+
+[Back to top](#table-of-contents)
 
 ## Technologies used
 
@@ -486,6 +515,8 @@ __You can find the live link to the site here: [Pizza: To Be or Not To Be]()__
 - streamlit             used for creating and sharing this project's interface
 </pre>
 
+[Back to top](#table-of-contents)
+
 ## Credits
 
 ### Content
@@ -511,3 +542,5 @@ __You can find the live link to the site here: [Pizza: To Be or Not To Be]()__
 Thanks to [Code Institute](https://codeinstitute.net/global/) and my one-off session mentor Mo Shami. 
 
 ### Deployed version at [cherry-powdery-mildew-detector.herokuapp.com]()
+
+[Back to top](#table-of-contents)
