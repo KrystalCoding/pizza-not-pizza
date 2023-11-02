@@ -9,9 +9,15 @@ from src.data_management import load_pkl_file
 
 def plot_predictions_probabilities(pred_proba, pred_class):
     """
-    Plot prediction probability results as percentages
-    """
+    Plot prediction probability results as percentages.
 
+    Parameters:
+    pred_proba (float): The prediction probability.
+    pred_class (str): The predicted class label ('Pizza' or 'Not-Pizza').
+
+    Returns:
+    None
+    """
     # Calculate the percentage likelihood of being pizza and not-pizza
     pizza_percentage = pred_proba * 100
     not_pizza_percentage = 100 - pizza_percentage
@@ -40,7 +46,14 @@ def plot_predictions_probabilities(pred_proba, pred_class):
 
 def resize_input_image(img, version):
     """
-    Reshape image to the average image size and convert it to RGB
+    Reshape an image to the average image size and convert it to RGB.
+
+    Parameters:
+    img (PIL.Image.Image): The input image.
+    version (str): The version of the model.
+
+    Returns:
+    np.ndarray: The processed image as a NumPy array.
     """
     image_shape = load_pkl_file(file_path=f"outputs/{version}/image_shape.pkl")
     img_resized = img.resize((image_shape[1], image_shape[0]), Image.ANTIALIAS)
@@ -56,7 +69,14 @@ def resize_input_image(img, version):
 
 def load_model_and_predict(my_image, version):
     """
-    Load and perform ML prediction over live images
+    Load a trained model and perform image classification.
+
+    Parameters:
+    my_image (np.ndarray): The input image as a NumPy array.
+    version (str): The version of the model.
+
+    Returns:
+    tuple: A tuple containing the prediction probability and class label.
     """
 
     model = load_model(f"outputs/{version}/pizza_detector_model.h5")
@@ -67,7 +87,8 @@ def load_model_and_predict(my_image, version):
     pizza_percentage = pred_proba * 100
     not_pizza_percentage = (1 - pred_proba) * 100
 
-    pred_class = 'Pizza' if pizza_percentage > not_pizza_percentage else 'Not-Pizza'
+    pred_class = 'Pizza' if pizza_percentage > not_pizza_percentage \
+        else 'Not-Pizza'
 
     st.write(
         f"The predictive analysis indicates the sample cell is "

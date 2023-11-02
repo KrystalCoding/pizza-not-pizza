@@ -12,20 +12,36 @@ from src.machine_learning.predictive_analysis import (
 
 
 def page_pizza_detector_body():
+    """
+    Display the pizza detection page in the Streamlit app.
+
+    This function allows users to upload images for live pizza detection 
+    and provides predictions and analysis reports for each image.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+    """
     st.info(
-        f"* The client is interested in telling whether a given cell contains a pizza "
+        f"* The client is interested in telling whether a given cell "
+        "contains a pizza "
         f"or not."
     )
 
     st.write(
-        f"* You can download a set of pizza or not-pizza photos for live prediction. "
-        f"You can download the images from [here](https://www.kaggle.com/datasets/carlosrunner/pizza-not-pizza)."
+        f"* You can download a set of pizza or not-pizza photos "
+        "for live prediction. "
+        f"You can download the images from "
+        "[here](https://www.kaggle.com/datasets/carlosrunner/pizza-not-pizza)."
     )
 
     st.write("---")
 
-    images_buffer = st.file_uploader('Upload photo samples. You may select more than one.',
-                                     type=['png', 'jpg'], accept_multiple_files=True)
+    images_buffer = st.file_uploader(
+        'Upload photo samples. You may select more than one.',
+        type=['png', 'jpg'], accept_multiple_files=True)
 
     if images_buffer is not None:
         df_report = pd.DataFrame([])
@@ -35,7 +51,8 @@ def page_pizza_detector_body():
             st.info(f"Photo Sample: **{image.name}**")
             img_array = np.array(img_pil)
             st.image(
-                img_pil, caption=f"Image Size: {img_array.shape[1]}px width x {img_array.shape[0]}px height")
+                img_pil, caption=f"Image Size: {img_array.shape[1]}px width "
+                "x {img_array.shape[0]}px height")
 
             version = 'v1'
             resized_img = resize_input_image(img=img_pil, version=version)
@@ -43,8 +60,8 @@ def page_pizza_detector_body():
                 resized_img, version=version)
             plot_predictions_probabilities(pred_proba, pred_class)
 
-            df_report = df_report.append({"Name": image.name, 'Result': pred_class},
-                                         ignore_index=True)
+            df_report = df_report.append(
+                {"Name": image.name, 'Result': pred_class}, ignore_index=True)
 
         if not df_report.empty:
             st.success("Analysis Report")

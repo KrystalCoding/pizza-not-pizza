@@ -198,8 +198,8 @@ In our pizza-not-pizza project, accuracy in pizza detection is crucial, but the 
 
 To validate this hypothesis, we assessed the system's real-time processing capabilities and its efficiency in handling multiple image classifications. This evaluation aims to ensure that the system meets the client's operational requirements. We measured the response time of the system when classifying images, ensuring it can provide near-instantaneous results, which is essential for streamlining decision-making processes. Additionally, we examined the system's scalability to handle a larger volume of images, reflecting the client's potential expansion of operations.
 
-Performance analysis:
-The system offers pagination for multiple image uploads, which addresses our client's needs:
+Performance analysis: Success
+Our dashboard system offers pagination for multiple image uploads and though dependent on an internet connection,speedily addresses our client's needs:
 ![model_with_dropout](INSERT IMAGE)
 
 
@@ -295,7 +295,7 @@ Our project is driven by a set of defined business requirements aimed at assisti
 [Back to top](#table-of-contents)
 
 ### Business Requirement 1: Data Visualization 
->The first business requirement involves creating data visualizations to distinguish pizzas from non-pizzas. To address this requirement, we derived specific user stories, and each user story corresponds to a machine learning task. All these tasks have been manually tested and validated for functionality. They are as follows
+>The first business requirement involves creating data visualizations to determine if we can intuitively distinguish pizzas from non-pizzas. To address this requirement, we derived specific user stories, and each user story corresponds to a machine learning task. All these tasks have been manually tested and validated for functionality. They are as follows
 
 - **User Story 1**: As a client, I want to easily navigate through an interactive dashboard to visualize and comprehend the presented data.
     - This user story led to the development of a Streamlit-based dashboard with an intuitive navigation sidebar.
