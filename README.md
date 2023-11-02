@@ -187,27 +187,26 @@ In our pizza-not-pizza project, we observed that the pre-trained VGG16 model, wi
 
 ---
 ### Hypothesis 3 
-> The Addition of Dropout Layers Improves Pizza Detection Model Performance
+> The Project's Success Relies on Accurate Pizza Detection and Efficient System Response
 
 **1. Introduction**
 
-Dropout layers are a popular regularization technique used in deep learning to prevent overfitting. When dropout is applied, it randomly sets a fraction of input units to 0 at each update during training, which helps to prevent complex co-adaptations on training data and, in turn, enhances model generalization.
+In our pizza-not-pizza project, accuracy in pizza detection is crucial, but the project's success extends beyond classification. It encompasses the system's efficiency and response time. We hypothesize that the project's overall success relies not only on accurate pizza detection but also on the system's real-time processing capabilities and its ability to handle a large number of image classifications efficiently.
 
-For our pizza detection project, we hypothesize that incorporating dropout layers into the model architecture will improve its overall performance. We aim to explore whether the addition of dropout layers helps to reduce overfitting and enhance the model's ability to accurately classify pizza and non-pizza images.
 
 **2. Observation**
 
-To validate this hypothesis, we experimented with two versions of the model: one with dropout layers and one without. Both models shared the same architecture and hyperparameters.
+To validate this hypothesis, we assessed the system's real-time processing capabilities and its efficiency in handling multiple image classifications. This evaluation aims to ensure that the system meets the client's operational requirements. We measured the response time of the system when classifying images, ensuring it can provide near-instantaneous results, which is essential for streamlining decision-making processes. Additionally, we examined the system's scalability to handle a larger volume of images, reflecting the client's potential expansion of operations.
 
-Upon comparing the results, we observed that the model with dropout layers exhibited improved performance. It displayed lower signs of overfitting and better generalization on the test dataset. The dropout layers introduced an element of randomness during training, preventing the model from relying too heavily on specific features and patterns, and thereby enhancing its ability to make accurate predictions.
+Performance analysis:
+The system offers pagination for multiple image uploads, which addresses our client's needs:
+![model_with_dropout](INSERT IMAGE)
 
-Performance comparison between models with and without dropout layers:
-Model with dropout layers: ![model_with_dropout](INSERT IMAGE)
-Model without dropout layers: ![model_without_dropout](INSERT IMAGE)
 
 **3. Conclusion**
 
-Our hypothesis that the addition of dropout layers improves pizza detection model performance has been validated through our experiments. The inclusion of dropout layers contributed to reducing overfitting and enhancing the model's ability to generalize better on unseen data. This finding underscores the importance of regularization techniques, such as dropout, in improving the accuracy and reliability of pizza detection models. Further exploration of dropout hyperparameters and variations in dropout strategies can lead to even more significant performance improvements.
+The success of our pizza-not-pizza project extends beyond accurate pizza detection. It hinges on the system's efficiency, response time, and scalability. By validating this hypothesis, we ensure that the system not only identifies pizzas accurately but also does so in a manner that meets the operational needs of our client.
+
 
 [Back to top](#table-of-contents)
 
