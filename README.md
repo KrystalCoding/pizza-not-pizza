@@ -309,14 +309,14 @@ Our project is driven by a set of defined business requirements aimed at assisti
 - **User Story 4**: As a client, I want to view an image montage representing pizzas and non-pizzas, aiding visual differentiation.
     - This led to the development of an image montage feature for both pizzas and non-pizzas.
 
-**Please refer to [Hypothesis 1](#hypothesis-1)for more details on why these visualizations are important.**
+**Please refer to [Hypothesis 1](#hypothesis-1) for more details on why these visualizations are important.**
 
 [Back to top](#table-of-contents)
 
 ### Business Requirement 2: Classification
 >The second business requirement revolves around developing a classification system that can accurately determine whether a given image contains pizza or not. To fulfill this requirement, we derived the following user story:
 
-- **User Story 5**: As a client, I want a Machine Learning model to predict with an accuracy of at least 80% whether a given image contains pizza or another food group.
+- **User Story 5**: As a client, I want a Machine Learning model to predict with an accuracy of at least 80% whether a given image contains pizza or another food group so that manual time for this task and risk of human error will be decreased.
     - This user story led to the creation of a machine learning model that is capable of achieving the specified prediction accuracy. Users can upload food images to the dashboard, and the model provides instant evaluations.
 
 [Back to top](#table-of-contents)
@@ -331,12 +331,19 @@ Our project is driven by a set of defined business requirements aimed at assisti
 
 ## ML Business Case
 
-### Pizza Classifier
-Our primary Machine Learning objective is to develop a model capable of distinguishing between images containing pizza and those that do not. This classification problem is categorized as supervised learning, involving a binary classification model. The success metrics for our model include achieving an accuracy of 85% or higher on the test set.
+### PizzaPal's Pizza Detection Revolution
+At PizzaPal, we're embarking on a culinary journey with a bold vision – to reinvent the way we detect the presence of pizza in images. Our mission is clear: create a state-of-the-art Machine Learning model capable of making instantaneous, ultra-precise determinations about whether an image contains the delectable delight of pizza. This problem falls into the realm of supervised learning, focusing on binary classification.
 
-In practical terms, this model will enable users to take a picture of a food item, and upon uploading it to the application, the model will provide an instant prediction regarding whether the image contains pizza or not. This approach significantly accelerates the assessment process, replacing manual inspections.
+Our ultimate goal is nothing short of a game-changer. We're striving for an exceptional 80% accuracy on the test set, setting a new industry standard. We're not just developing a model; we're ushering in a culinary revolution!
 
-The model's training data is drawn from the "Pizza or Not Pizza" dataset available on Kaggle, consisting of 1966 food images. By leveraging Machine Learning, we aim to offer a faster and more reliable pizza detection system that aligns with PizzaPal's quality control objectives, reduces operational inefficiencies, and enhances customer satisfaction.
+In the practical world, our model empowers users to capture a snapshot of their food creation, be it a pizza masterpiece or not, and instantly upload it to our app. Within the blink of an eye, our model will provide a decisive verdict – pizza or not? This isn't just speed; it's culinary magic at your fingertips.
+
+No more lengthy manual inspections or room for human error. Our model doesn't just save time; it assures precision, consistency, and pure pizza perfection. Imagine the possibilities!
+
+Our training data, drawn from the rich "Pizza or Not Pizza" dataset on Kaggle, comprises a sumptuous collection of 1966 tantalizing food images. It's not just a dataset; it's a treasure trove of culinary artistry waiting to be explored.
+
+This project isn't just about Machine Learning; it's about enhancing the very essence of culinary delight. At PizzaPal, we're serving up innovation, one pixel at a time, and redefining the way we savor the flavors of pizza. PizzaPal's Pizza Detection Revolution has arrived, and you're invited to taste the future.
+
 ![pizza_detector](INSERT IMAGE)
 
 ## Dashboard Design (Streamlit App User Interface)
@@ -356,6 +363,14 @@ This page focuses on visually differentiating pizza images from other types of f
 
 ![Page2](INSERT IMAGE)
 
+- **Average Image Plot**: This plot displays the average image for both pizza and non-pizza categories. It helps the client visually differentiate between the two by showcasing the mean features present in each category. For instance, pizza images tend to show specific characteristics in the mean image, aiding in the identification of pizzas.
+
+- **Standard Deviation Plot**: The standard deviation plot exhibits the variation or noise present in pizza and non-pizza images. Higher variations in the standard deviation indicate diverse toppings or attributes in the images. It visually represents how pizza and non-pizza images differ in terms of features.
+
+- **Difference Between Averages**: This plot visually compares the average images of pizza and non-pizza. While there might not be clear-cut patterns to distinguish between the two, the subtle differences in color and shape between the average pizza and non-pizza images are highlighted.
+
+- **Image Montage**: The image montage feature creates a collection of images representing both pizza and non-pizza categories. It helps users observe multiple examples of each category, aiding in their ability to differentiate between the two.
+
 [Back to top](#table-of-contents)
 
 ### Page 3: Pizza Detection
@@ -366,18 +381,32 @@ On this page, users can upload food images to obtain instant predictions about w
 [Back to top](#table-of-contents)
   
 ### Page 4: Project Hypothesis and Validation
-In this section, we explore our hypothesis about distinguishing parasitized and uninfected cells visually. We discuss image montages and various studies conducted during the project.
+In this section, we explore our hypothesis about distinguishing pizza and images which contain food that is not pizza, visually. We discuss image montages and various studies conducted during the project.
 
 ![Page4](INSERT IMAGE)
+
+- **Prediction Probability Plot**: This plot presents the prediction probabilities as percentages for each class (Pizza and Not-Pizza). It helps users understand the confidence level of the model's predictions. For instance, a higher pizza percentage indicates a stronger likelihood of the image containing pizza.
+
+- **Resized Input Image**: This plot shows the input image resized to the average image size used for model predictions. This resizing enables users to understand how the image is preprocessed before classification.
+
+- **Prediction Result**: The prediction result indicates whether the image is classified as "Pizza" or "Not-Pizza" based on the model's evaluation. The accompanying percentages provide the likelihood of the image belonging to each category.
 
 [Back to top](#table-of-contents)
 
 ### Page 5: ML Performance Metrics
 Here, we present metrics related to the project's performance, including the distribution of labels in the training and test sets. We showcase model training history in terms of accuracy and losses and provide general performance metrics on the test set.
 
-Our dashboard offers a comprehensive view of the Pizza-Not-Pizza image classification system and its applications in the food and beverage industry. Feel free to explore each page to gain deeper insights into this innovative project. [pizza-predictor.herokuapp.com](https://pizza-to-be-or-not-to-be.herokuapp.com/)
-
 ![Page5](INSERT IMAGE)
+
+- **Labels Distribution Plot**: This plot illustrates the distribution of labels (Pizza and Not-Pizza) in the train, validation, and test datasets. It shows the frequency of each label in each dataset, helping users understand the dataset's composition.
+
+- **Model Training Accuracy Plot**: The accuracy plot displays the training and validation accuracy of the machine learning model during training. It helps users assess the model's learning progress and its ability to make accurate predictions.
+
+- **Model Training Losses Plot**: The losses plot showcases the training and validation loss values during model training. It is an essential metric to understand how well the model is converging to make accurate predictions.
+
+- **Generalized Performance Metrics**: This section provides metrics like loss and accuracy on the test set to assess how well the trained model performs on new, unseen data.
+
+Our dashboard offers a comprehensive view of the Pizza-Not-Pizza image classification system and its applications in the food and beverage industry. Feel free to explore each page to gain deeper insights into this innovative project. [pizza-predictor.herokuapp.com](https://pizza-to-be-or-not-to-be.herokuapp.com/)
 
 [Back to top](#table-of-contents)
 
