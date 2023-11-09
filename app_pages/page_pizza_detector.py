@@ -15,7 +15,7 @@ def page_pizza_detector_body():
     """
     Display the pizza detection page in the Streamlit app.
 
-    This function allows users to upload images for live pizza detection 
+    This function allows users to upload images for live pizza detection
     and provides predictions and analysis reports for each image.
 
     Parameters:
@@ -24,13 +24,7 @@ def page_pizza_detector_body():
     Returns:
     None
     """
-    st.info(
-        f"* The client is interested in telling whether a given cell "
-        "contains a pizza "
-        f"or not."
-    )
-
-    st.write(
+    st.success(
         f"* You can download a set of pizza or not-pizza photos "
         "for live prediction. "
         f"You can download the images from "
@@ -68,3 +62,5 @@ def page_pizza_detector_body():
             st.table(df_report)
             st.markdown(download_dataframe_as_csv(
                 df_report), unsafe_allow_html=True)
+
+        st.subheader("Report Generation Conclusions")

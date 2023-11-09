@@ -9,8 +9,8 @@ def page_ml_performance_metrics():
     """
     Display machine learning performance metrics in the Streamlit app.
 
-    This function shows various metrics related to model training, 
-    including label distribution, accuracy, and loss graphs, and general 
+    This function shows various metrics related to model training,
+    including label distribution, accuracy, and loss graphs, and general
     erformance metrics on the test set.
 
     Parameters:

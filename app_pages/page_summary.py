@@ -6,7 +6,7 @@ def page_summary_body():
     """
     Display the summary of the Pizza-Not-Pizza classification project.
 
-    This function provides an overview of the project, including general 
+    This function provides an overview of the project, including general
     information, dataset content, business requirements,
     and objectives.
 
@@ -114,6 +114,66 @@ def page_summary_body():
         "7. **Continuous Improvement**: The system should support continuous "
         "improvement and model retraining to adapt to changes in image data "
         "patterns and to maintain high prediction accuracy."
+    )
+
+    # Insert conclusions for Business Requirement 1: Data Visualization
+    st.subheader("Data Visualization Conclusions")
+
+    # User Story 1: Interactive Dashboard Navigation
+    st.markdown(
+        "**User Story 1: Interactive Dashboard Navigation**\n"
+        "- **Conclusion:** The implementation of a Streamlit-based interactive "
+        "dashboard has successfully addressed the need for easy navigation. "
+        "Users can seamlessly explore and comprehend presented data through "
+        "an intuitive sidebar."
+    )
+
+    # User Story 2: Mean and Standard Deviation Visualization
+    st.markdown(
+        "**User Story 2: Mean and Standard Deviation Visualization**\n"
+        "- **Conclusion:** The creation of 'mean' and 'standard deviation' "
+        "images for both pizza and non-pizza categories provides users with "
+        "visual cues for differentiating between the two."
+    )
+
+    # User Story 3: Visualizing Differences between Averages
+    st.markdown(
+        "**User Story 3: Visualizing Differences between Averages**\n"
+        "- **Conclusion:** The showcased disparity between average pizza and "
+        "non-pizza images aids in visual differentiation, contributing to a "
+        "better understanding of distinguishing features."
+    )
+
+    # User Story 4: Image Montage for Visual Differentiation
+    st.markdown(
+        "**User Story 4: Image Montage for Visual Differentiation**\n"
+        "- **Conclusion:** The development of the image montage feature enhances "
+        "visual differentiation, allowing users to explore a collection of pizza "
+        "and non-pizza images in a consolidated format."
+    )
+
+    # Insert conclusions for Business Requirement 2: Classification
+    st.subheader("Classification Conclusions")
+
+    # User Story 5: ML Model for Pizza Detection
+    st.markdown(
+        "**User Story 5: ML Model for Pizza Detection**\n"
+        "- **Conclusion:** The machine learning model has been successfully "
+        "trained to predict with an accuracy of 85% or above on the test set. "
+        "Users can now upload food images, and the model provides instant "
+        "evaluations for pizza detection."
+    )
+
+    # Insert conclusions for Business Requirement 3: Report Generation
+    st.subheader("Report Generation Conclusions")
+
+    # User Story 6: ML Predictions Report
+    st.markdown(
+        "**User Story 6: ML Predictions Report**\n"
+        "- **Conclusion:** The integration of a feature into the Streamlit "
+        "dashboard enables the generation of downloadable .csv reports after "
+        "each batch of images is uploaded. This feature provides a comprehensive "
+        "overview of prediction results."
     )
 
 
