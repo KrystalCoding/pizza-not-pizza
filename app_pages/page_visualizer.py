@@ -14,7 +14,7 @@ def page_visualizer_body():
     """
     Display the Pizza Visualizer page in Streamlit.
 
-    This function provides a user interface for visualizing pizza 
+    This function provides a user interface for visualizing pizza
     vs. not-pizza images, differences between
     pizza and not-pizza averages, and creating an image montage.
 
@@ -32,15 +32,21 @@ def page_visualizer_body():
 
     version = 'v1'
 
-    if st.checkbox("Visualizing Pizza vs. Not-Pizza"):
+    # Check if the image file exists
+    if os.path.exists(f"outputs/{version}/avg_var_not_pizza.png"):
         avg_not_pizza = plt.imread(f"outputs/{version}/avg_var_not_pizza.png")
-        avg_pizza = plt.imread(f"outputs/{version}/avg_var_pizza.png")
+    else:
+        st.error("Error: Image file not found.")
+        avg_not_pizza = None
+
+    avg_pizza = plt.imread(f"outputs/{version}/avg_var_pizza.png")
 
     st.warning("While exploring the visual differences, we couldn't find "
                "clear patterns to differentiate pizza from non-pizza. "
                "However, there's a subtle difference in color pigment "
                "between the average images of both labels.")
 
+    # Display images
     st.image(avg_not_pizza, caption='Not Pizza - Average and Variability')
     st.image(avg_pizza, caption='Pizza - Average and Variability')
     st.write("---")

@@ -1,5 +1,10 @@
 ![Responsive Design](INSERT IMAGE)
 
+<details><summary>See Image</summary>
+<img src="assets/deployment/account-create.PNG">
+</details>
+
+
 ## Table of Contents
 1. [Dataset Content](#dataset-content)
 2. [Business Requirements](#business-requirements)
