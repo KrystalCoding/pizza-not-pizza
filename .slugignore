@@ -1,0 +1,19 @@
+# Exclude Python-related files
+*.pyc
+*.pyo
+__pycache__/
+
+# Exclude Node.js-related files
+node_modules/
+
+# Exclude Kaggle-related files
+kaggle.json
+
+# Exclude Cloudinary-related files
+cloudinary_python.txt
+
+# Exclude test and train directories from the pizza_not_pizza dataset
+inputs/carlosrunner/pizza-not-pizza/pizza_not_pizza/test/
+inputs/carlosrunner/pizza-not-pizza/pizza_not_pizza/train/
+
+keep_active.py
