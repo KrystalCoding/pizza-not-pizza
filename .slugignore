@@ -17,3 +17,6 @@ inputs/carlosrunner/pizza-not-pizza/pizza_not_pizza/test/
 inputs/carlosrunner/pizza-not-pizza/pizza_not_pizza/train/
 
 keep_active.py
+
+README.md
+jupyter_notebooks
