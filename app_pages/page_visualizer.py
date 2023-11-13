@@ -25,10 +25,6 @@ def page_visualizer_body():
     None
     """
     st.write("### Pizza Visualizer")
-    st.info(
-        "The client is interested in visually differentiating pizza from food "
-        "that is not pizza."
-    )
 
     version = 'v1'
 
@@ -74,6 +70,25 @@ def page_visualizer_body():
                           label_to_display=label_to_display,
                           nrows=8, ncols=3, figsize=(10, 25))
         st.write("---")
+
+    st.subheader("Page Summary")
+    st.info(
+        "**Business Requirements Addressed:**\n"
+        "- Automated Pizza Detection (Partially addressed through "
+        "visualization of pizza vs. not-pizza images)\n"
+        "- Prediction Accuracy (Partially addressed through visualization of "
+        "pizza vs. not-pizza images)\n"
+        "- User-Friendly Interface (Partially addressed through "
+        "visualization options)\n"
+        "\n---\n"
+        "**Conclusions:**\n"
+        "- Visual differences in average images address the need for visual "
+        "differentiation, as mentioned in User Story 1.\n"
+        "- Presentation of differences between pizza and not-pizza averages "
+        "fulfills User Story 2.\n"
+        "- The option to create an image montage meets the requirement for "
+        "exploring labeled images, as per User Story 3."
+    )
 
 
 def image_montage(dir_path, label_to_display, nrows, ncols, figsize=(15, 10)):
