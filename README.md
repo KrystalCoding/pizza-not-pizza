@@ -1,4 +1,4 @@
-![Responsive Design](images/responsive_design.png)
+![Responsive Design](assets/images/responsive_design.png)
 
 ## Table of Contents
 1. [Dataset Content](#dataset-content)
