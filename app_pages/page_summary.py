@@ -174,6 +174,24 @@ def page_summary_body():
         "dashboard enables the generation of downloadable .csv reports after "
         "each batch of images is uploaded. This feature provides a comprehensive "
         "overview of prediction results."
+        "\n---\n"
+    )
+    
+    st.subheader("Page Summary")
+    st.info(
+        "**Business Requirements Addressed:**\n"
+        "- Automated Pizza Detection (Partially addressed through project "
+        "summary and dashboard introduction)\n"
+        "- Prediction Accuracy (Partially addressed through project summary "
+        "and dashboard introduction)\n"
+        "- Scalability\n"
+        "- User-Friendly Interface  (Partially addressed through project "
+        "summary and dashboard introduction)\n"
+        "\n---\n"
+        "**Conclusions:**\n"
+        "- The interactive dashboard simplifies navigation, ensuring users can "
+        "effortlessly explore and comprehend data, meeting the User Story 1 "
+        "requirement."
     )
 
 

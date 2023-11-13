@@ -63,4 +63,19 @@ def page_pizza_detector_body():
             st.markdown(download_dataframe_as_csv(
                 df_report), unsafe_allow_html=True)
 
-        st.subheader("Report Generation Conclusions")
+    st.subheader("Page Summary")
+    st.info(
+        "**Business Requirements Addressed:**\n"
+        "- Automated Pizza Detection (Addressed through live pizza detection "
+        "and analysis reports)\n"
+        "- Prediction Reporting (Addressed through live pizza detection and "
+        "analysis reports)"
+        "\n---\n"
+        "**Conclusions:**\n"
+        "- The system generates downloadable .csv reports, meeting User "
+        "Story 6.\n"
+        "- Users can upload images for live pizza detection, fulfilling the "
+        "live prediction requirement in User Story 1.\n"
+        "- The analysis report, including image names and results, satisfies "
+        "the prediction reporting requirement in User Story 2."
+    )
