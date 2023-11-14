@@ -982,7 +982,7 @@ Thanks to [Code Institute](https://codeinstitute.net/global/) and my one-off ses
 
 ---
 
-### Click to view Deployed version: [here](https://pizza-detector-0540d49673e2.herokuapp.com/){:target="_blank"}.
+### Click to view Deployed version: [here](https://pizza-detector-0540d49673e2.herokuapp.com/).
 
 ---
 
