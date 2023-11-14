@@ -5,7 +5,7 @@
 2. [Business Requirements](#business-requirements)
 3. [Hypothesis and validation](#hypothesis-and-validation)
 4. [Rationale for the model](#the-rationale-for-the-model)
-5. [Implementation of the Business Requirements](#implementation-of-business-requirements)
+5. [Implementation of the Business Requirements](#the-rationale-for-mapping-business-requirements-to-data-visualizations-and-ml-tasks)
 6. [ML Business case](#ml-business-case)
 7. [Dashboard design](#dashboard-design-streamlit-app-user-interface)
 8. [CRISP-DM Process](#crisp-dm-process-implementation)
@@ -14,7 +14,11 @@
 11. [Technologies used](#technologies-used)
 12. [Credits](#credits)
 
+<br>
+
 ### Live Pizza Predictor can be found [here](https://pizza-detector-0540d49673e2.herokuapp.com/)
+
+<br>
 
 ## Dataset Content
 
@@ -23,6 +27,14 @@ The dataset contains 983 featured photos of pizza variations, as well as 983 pho
 <details><summary>See Image</summary>
 <img src="assets/kaggle.png">
 </details>
+
+<br>
+
+---
+
+[Back to top](#table-of-contents)
+
+<br>
 
 ## Business Requirements
 
@@ -53,6 +65,12 @@ Business Requirements for Pizza vs. Not-Pizza Image Classification System:
 6. **Fast Processing:** The client requires a system capable of processing images quickly and providing near-instantaneous results. This speed is essential for streamlining decision-making processes.
 
 7. **Continuous Improvement:** The system should support continuous improvement and model retraining to adapt to changes in image data patterns and to maintain high prediction accuracy.
+
+---
+
+[Back to top](#table-of-contents)
+
+<br>
 
 ## Hypothesis and validation
 
@@ -123,15 +141,19 @@ In addressing business requirement, **Automated Pizza Detection**, we created an
 - Toppings Diversity: Analyzing the average and variability in images, we noticed that pizzas tend to exhibit a more centered and circular pattern. In contrast, "not-pizza" images display a wider array of shapes and patterns, emphasizing the uniqueness of pizza toppings.
 
     <details><summary>See Image</summary>
-    <img src="AVERAGE AND VARIABILITY FOURSOME">
+    <img src="assets/pizza_avg_var.png">
     </details>
+    <details><summary>See Image</summary>
+    <img src="assets/not_pizza_avg_var.png">
+    </details>
+
 
 <br>
 
 - Averaging Images: Comparing the average pizza image to the average "not-pizza" image did not reveal any immediate and intuitive difference. This suggests that pizza detection relies on a combination of subtle features, including shape and toppings.
 
     <details><summary>See Image</summary>
-    <img src="AVERAGES AND DIFFERENCE W BLACK 3RD">
+    <img src="assets/avg_differences.png">
     </details>
 <br>
 
@@ -176,7 +198,7 @@ In our pizza-not-pizza project, we face a classification problem. We aim to clas
 - **Accuracy**: Accuracy is the proportion of correct predictions made by the model.
 
     <details><summary>See Image</summary>
-    <img src="MODEL OUTPUT SHOWING EPOCHS">
+    <img src="assets/vgg16_model_training_output_3.PNG">
     </details>
 
     <br>
@@ -188,7 +210,7 @@ In our learning curve plots, we look for the right fit of the learning algorithm
 - Continued training of a well-fitted model may lead to overfitting. This is why ML models usually have an [early stopping](https://en.wikipedia.org/wiki/Early_stopping) function utilized which interrupts the model's learning phase when it ceasing improving.
 
     <details><summary>See Image</summary>
-    <img src="EARLY STOPPING CODE">
+    <img src="assets/early_stopping.png">
     </details>
 
 <br>
@@ -200,7 +222,16 @@ In our learning curve plots, we look for the right fit of the learning algorithm
 Our experimentation in the pizza-not-pizza project involved various model configurations and hyperparameter adjustments. We initiated the process with a custom model that featured three convolutional layers, max-pooling, and dense layers. This model was trained with a batch size of 20 for 25 epochs. However, we observed that the custom model did not achieve the desired accuracy, and the loss did not decrease significantly during training. It struggled to capture the intricate features that distinguish pizza from non-pizza images.
 
 <details><summary>See Image</summary>
-<img src="OWN MODEL">
+<img src="assets/own_model.PNG">
+</details>
+<details><summary>See Image</summary>
+<img src="assets/own_model_training_output.PNG">
+</details>
+<details><summary>See Image</summary>
+<img src="assets/own_model_accuracy.PNG">
+</details>
+<details><summary>See Image</summary>
+<img src="assets/own_model_loss.PNG">
 </details>
 
 <br>
@@ -208,15 +239,20 @@ Our experimentation in the pizza-not-pizza project involved various model config
 As an alternative, we explored the pre-trained VGG16 model. By fine-tuning the top layers to adapt to our binary classification task of pizza detection, we achieved better results. With a batch size of 35 and training for only 5 epochs, this VGG16-based model displayed improved accuracy. It successfully captured nuanced patterns and features critical for distinguishing between pizza and not-pizza images. Moreover, the loss function showed consistent decreases, indicating better convergence.
 
 <details><summary>See Image</summary>
-<img src="VGG16 MODEL 1">
+<img src="assets/vgg16_model_training_output_1.PNG">
 </details>
-
 <br>
 
 Encouraged by this initial progress, we further refined our VGG16-based model. We reduced the batch size to 15 and incorporated additional layers, including dense layers, L2 regularization, and dropout layers. We set the batch size to 20. These modifications led to significant improvements in loss. However, we continued to grapple with accuracy, as this model was overfitted and could not make accurate predictions on previously unseen photos.
 
 <details><summary>See Image</summary>
-<img src="VGG16 Model 2">
+<img src="assets/vgg16_batch_size_20.PNG">
+</details>
+<details><summary>See Image</summary>
+<img src="assets/vgg16_batch_size_20_accuracy.PNG">
+</details>
+<details><summary>See Image</summary>
+<img src="assets/vgg16_batch_size_20_loss.PNG">
 </details>
 
 <br>
@@ -224,7 +260,13 @@ Encouraged by this initial progress, we further refined our VGG16-based model. W
 In order to reduce overfitting, we set the batch size to 16, reduced the two dense layers down to only one simplified one without the l2 parameter, set the patience from 3 to 5, changed the learning rate from 0.001 to 0.0001, and set the epochs to 5.
 
 <details><summary>See Image</summary>
-<img src="VGG16 Model 3">
+<img src="">
+</details>
+<details><summary>See Image</summary>
+<img src="assets/vgg16_model_accuracy_3.PNG">
+</details>
+<details><summary>See Image</summary>
+<img src="assets/vgg16_model_loss_3.PNG">
 </details>
 
 <br>
@@ -235,41 +277,9 @@ In summary, our experimentation revealed that the VGG16-based model, with fine-t
 
 **3. Conclusion**
 
-In our process of experimentation, we observed that the pre-trained VGG16 model, with fine-tuned top layers, showed promise in distinguishing pizza from not-pizza images. However, achieving high accuracy remained a challenge despite various enhancements to the model. When we achieved an accuracy report of 92+%, it was an exciting moment. It, however, quickly led to a let-down, as that proved to be our 3/4 attempt which was an overfitted model. 
+In our process of experimentation, we observed that the pre-trained VGG16 model, with fine-tuned top layers, showed promise in distinguishing pizza from not-pizza images. However, achieving high accuracy remained a challenge despite various enhancements to the model. When we achieved an accuracy report of 92+%, it was an exciting moment. It, however, quickly led to a let-down, as that proved to be an overfitted model. 
 
 The primary focus of our experiment was to evaluate different model architectures and hyperparameters to improve classification performance for our specific problem. As a result, our conclusions are based on the differences between our custom model and the VGG16-based models. Further refinements and investigations are needed to enhance accuracy and improve the model's performance.
-
-- Loss/Accuracy of our custom model:
-
-    <details><summary>See Image</summary>
-    <img src="OWN MODEL LOSS & ACCURACY PLOTS">
-    </details>
-
-    <br>
-
-- Loss/Accuracy of original VGG16 model:
-
-    <details><summary>See Image</summary>
-    <img src="VGG16 1 LOSS & ACCURACY PLOTS">
-    </details>
-
-    <br>
-
-- Loss/Accuracy of enhanced VGG16 model:
-
-    <details><summary>See Image</summary>
-    <img src="VGG16 2 LOSS & ACCURACY PLOTS">
-    </details>
-
-    <br>
-
-- Final and best model:
-
-    <details><summary>See Image</summary>
-    <img src="VGG16 3 LOSS & ACCURACY PLOTS">
-    </details>
-
-    <br>
 
 **Sources**:
 - [Backpropagation in Fully Convolutional Networks](https://towardsdatascience.com/backpropagation-in-fully-convolutional-networks-fcns-1a13b75fb56a#:~:text=Backpropagation%20is%20one%20of%20the,respond%20properly%20to%20future%20urges.) by [Giuseppe Pio Cannata](https://cannydatascience.medium.com/)
@@ -305,7 +315,7 @@ Performance analysis: Moderately Successful
 While our code can handle multiple user photo uploads, and Streamlit offers pagination for multiple image uploads, the system seems to crash after aproximately 4 image uploads by any one user during a session. It is functional, but offers the capacity you might expect to get from a free dashboard system.
 
 <details><summary>See Image</summary>
-<img src="PAGINATION">
+<img src="assets/pagination.png">
 </details>
 
 <br>
@@ -324,6 +334,9 @@ The success of our pizza-not-pizza project extends beyond accurate pizza detecti
 
 The VGG16 model is a convolutional neural network with 13 convolutional layers and 3 fully connected layers. It uses a predefined architecture with multiple convolutional and pooling layers, followed by three fully connected layers and an output layer for classification.
 
+<details><summary>See Image</summary>
+<img src="assets/final_model_evaluation.png">
+</details>
 <details><summary>See Image</summary>
 <img src="VGG16 Model 3 (again)">
 </details>
@@ -510,7 +523,10 @@ Our mission is to create a state-of-the-art Machine Learning model, achieving an
 Our dataset, sourced from Kaggle's "Pizza or Not Pizza," comprises 1966 tantalizing food images, forming a treasure trove of culinary artistry. This project isn't just about Machine Learning; it's about enhancing the essence of culinary delight.
 
 <details><summary>See Image</summary>
-<img src="SUCCESSFUL PIZZA DETECTION">
+<img src="assets/prediction_pizza.png">
+</details>
+<details><summary>See Image</summary>
+<img src="assets/prediction_not_pizza.png">
 </details>
 
 <br>
@@ -528,7 +544,7 @@ Our dataset, sourced from Kaggle's "Pizza or Not Pizza," comprises 1966 tantaliz
     In this section, we provide an overview of the project, its objectives, and the importance of the Pizza-Not-Pizza image classification system. We highlight the business requirements and the dataset used for the project.
 
     <details><summary>See Image</summary>
-    <img src="STREAMLIT SUMMARY">
+    <img src="assets/streamlit_summary.png">
     </details>
 
     <br>
@@ -537,7 +553,7 @@ Our dataset, sourced from Kaggle's "Pizza or Not Pizza," comprises 1966 tantaliz
 This page focuses on visually differentiating pizza images from other types of food. We display the difference between average and variability images for pizza and not-pizza categories. We also present a comparison of average images and offer an image montage for a better visual understanding.
 
 <details><summary>See Image</summary>
-<img src="STREAMLIT VISUALIZER">
+<img src="assets/streamlit_visualizer.png">
 </details>
 
 <br>
@@ -547,7 +563,10 @@ This page focuses on visually differentiating pizza images from other types of f
 - **Standard Deviation Plot**: The standard deviation plot exhibits the variation or noise present in pizza and non-pizza images. Higher variations in the standard deviation indicate diverse toppings or attributes in the images. It visually represents how pizza and non-pizza images differ in terms of features.
 
     <details><summary>See Image</summary>
-    <img src="STREAMLIT 4x PLOT (again)">
+    <img src="assets/pizza_avg_var.png">
+    </details>
+    <details><summary>See Image</summary>
+    <img src="assets/not_pizza_avg_var.png">
     </details>
 
     <br>
@@ -555,7 +574,7 @@ This page focuses on visually differentiating pizza images from other types of f
 - **Difference Between Averages**: This plot visually compares the average images of pizza and non-pizza. While there might not be clear-cut patterns to distinguish between the two, the subtle differences in color and shape between the average pizza and non-pizza images are highlighted.
 
     <details><summary>See Image</summary>
-    <img src="STREAMLIT 3x PLOT (again)">
+    <img src="assets/avg_differences.png">
     </details>
 
     <br>
@@ -563,10 +582,10 @@ This page focuses on visually differentiating pizza images from other types of f
 - **Image Montage**: The image montage feature creates a collection of images representing both pizza and non-pizza categories. It helps users observe multiple examples of each category, aiding in their ability to differentiate between the two.
 
     <details><summary>See Image</summary>
-    <img src="IMAGE MONTAGE PIZZA">
+    <img src="assets/pizza_montage.png">
     </details>
     <details><summary>See Image</summary>
-    <img src="IMAGE MONTAGE NOT-PIZZA">
+    <img src="assets/not_pizza_montage.png">
     </details>
 
     <br>
@@ -575,8 +594,27 @@ This page focuses on visually differentiating pizza images from other types of f
 On this page, users can upload food images to obtain instant predictions about whether they contain pizza or not. We also provide a download link for sample pizza and not-pizza photos.
 
 <details><summary>See Image</summary>
-<img src="STREAMLIT DETECTION">
+<img src="assets/streamlit_detector.png">
 </details>
+
+<br>
+
+- **Prediction Probability Plot**: This plot presents the prediction probabilities as percentages for each class (Pizza and Not-Pizza). It helps users understand the confidence level of the model's predictions. For instance, a higher pizza percentage indicates a stronger likelihood of the image containing pizza.
+
+    <details><summary>See Image</summary>
+    <img src="assets/prediction_pizza.png">
+    </details>
+    <details><summary>See Image</summary>
+    <img src="assets/prediction_not_pizza.png">
+    </details>
+
+    <br>
+
+- **Prediction Result**: The prediction result indicates whether the image is classified as "Pizza" or "Not-Pizza" based on the model's evaluation. The accompanying percentages provide the likelihood of the image belonging to each category, as seen in the photos above. In addition, we have created a function for the user to download in .csv format, their own test anylsis results.
+
+    <details><summary>See Image</summary>
+    <img src="assets/analysis_report.png">
+    </details>
 
 <br>
 
@@ -587,29 +625,13 @@ On this page, users can upload food images to obtain instant predictions about w
 <br>
   
 ### Page 4: Project Hypothesis and Validation
-In this section, we explore our hypothesis about distinguishing pizza and images which contain food that is not pizza, visually. We discuss image montages and various studies conducted during the project.
+This section delves into our hypotheses regarding the visual identification of pizza and non-pizza images and what might affect the machine learning process. Through careful experimentation, we examine image montages and various studies conducted during the project. Please see this README.md's section on hypothesis to read more. 
 
 <details><summary>See Image</summary>
-<img src="STREAMLIT HYPOTHESIS">
+<img src="assets/streamlit_hypothesis.png">
 </details>
 
 <br>
-
-- **Prediction Probability Plot**: This plot presents the prediction probabilities as percentages for each class (Pizza and Not-Pizza). It helps users understand the confidence level of the model's predictions. For instance, a higher pizza percentage indicates a stronger likelihood of the image containing pizza.
-
-    <details><summary>See Image</summary>
-    <img src="STREAMLIT PERCENTAGES">
-    </details>
-
-    <br>
-
-- **Prediction Result**: The prediction result indicates whether the image is classified as "Pizza" or "Not-Pizza" based on the model's evaluation. The accompanying percentages provide the likelihood of the image belonging to each category.
-
-    <details><summary>See Image</summary>
-    <img src="STREAMLIT PREDICTION">
-    </details>
-
-    <br>
 
 ---
 
@@ -621,7 +643,7 @@ In this section, we explore our hypothesis about distinguishing pizza and images
 Here, we present metrics related to the project's performance, including the distribution of labels in the training and test sets. We showcase model training history in terms of accuracy and losses and provide general performance metrics on the test set.
 
 <details><summary>See Image</summary>
-<img src="STREAMLIT ML PERFORMANCE">
+<img src="assets/streamlit_ml_performance_metrics.png">
 </details>
 
 <br>
@@ -629,7 +651,7 @@ Here, we present metrics related to the project's performance, including the dis
 - **Label Distribution Graph**: This plot illustrates the distribution of labels (Pizza and Not-Pizza) in the train, validation, and test datasets. It shows the frequency of each label in each dataset, helping users understand the dataset's composition.
 
     <details><summary>See Image</summary>
-    <img src="SUCCESSFUL PIZZA DETECTION">
+    <img src="assets/streamlit_label_distribution_graph.png">
     </details>
 
     <br>
@@ -637,7 +659,7 @@ Here, we present metrics related to the project's performance, including the dis
 - **Loss and Accuracy Plot**: This plot depicts the training progress over five epochs. Notable improvements in accuracy and reductions in loss are observed, indicating the model's ability to learn from the training data. Validation accuracy consistently increases, ensuring the model generalizes well to new data.
 
     <details><summary>See Image</summary>
-    <img src="STREAMLIT LOSS AND ACCURACY">
+    <img src="assets/streamlit_loss_accuracy_plot.png">
     </details>
 
     <br>
@@ -645,7 +667,7 @@ Here, we present metrics related to the project's performance, including the dis
 - **Generalized Performance on Test Set**: A summary of the model's performance on the test set. The model achieved a loss of 0.7276 and an accuracy of 0.8579. These metrics provide insights into how well the trained model performs on previously unseen data, validating its effectiveness in real-world scenarios.
 
     <details><summary>See Image</summary>
-    <img src="STREAMLIT TEST SET RESULTS">
+    <img src="assets/streamlit_generalized_performance.png">
     </details>
 
 <br>
