@@ -535,146 +535,221 @@ Here, we present metrics related to the project's performance, including the dis
 
 [Back to top](#table-of-contents)
 
-## The process of Cross-industry standard process for data mining
-CRISP-DM, which stands for Cross-Industry Standard Process for Data Mining, is an industry-proven way to guide your data mining efforts.
-
-- As a methodology, it includes descriptions of the typical phases of a project, the tasks involved with each phase, and an explanation of the relationships between these tasks.
-- As a process model, CRISP-DM provides an overview of the data mining life cycle.
-
-**Source**: [IBM - crisp overview](https://www.ibm.com/docs/it/spss-modeler/saas?topic=dm-crisp-help-overview)
-
-**This process is documented using the Kanban Board provided by GitHub in this repository project section: [Predict Pizza...or not](https://github.com/KrystalCoding/pizza-not-pizza)**
+## The CRISP-DM Process and Kanban Board
+CRISP-DM, or Cross-Industry Standard Process for Data Mining, is a well-established methodology guiding data mining projects. This process model outlines the typical phases of a project, the associated tasks within each phase, and the interconnections between these tasks.
 
 A kanban board is an agile project management tool designed to help visualize work, limit work-in-progress, and maximize efficiency (or flow). It can help both agile and DevOps teams establish order in their daily work. Kanban boards use cards, columns, and continuous improvement to help technology and service teams commit to the right amount of work, and get it done!
 
-The CRISP-DM process is divided in [sprints](https://www.atlassian.com/agile/scrum/sprints#:~:text=What%20are%20sprints%3F,better%20software%20with%20fewer%20headaches.). Each sprint has Epics based on each CRISP-DM task which were subsequently split into task. Each task can be either in the *To Do*, *In progress*, *Review* status as the workflow proceeds and contains in-depth details.
+### Key Aspects of CRISP-DM:
+- **Methodology Overview**: Describes the phases and tasks involved in a data mining project.
 
-![Kanban detail](INSERT IMAGE)
+- **Process Model**: Provides a comprehensive view of the data mining life cycle.
+
+**Source**: [IBM - crisp overview](https://www.ibm.com/docs/it/spss-modeler/saas?topic=dm-crisp-help-overview)
+
+### Project Management with Kanban Board:
+This repository employs the GitHub Kanban Board to document and visualize the CRISP-DM process for the project Predict Pizza...or not. Utilizing the Kanban board enhances project management by:
+
+**Visualizing Work**: Utilizing cards, columns, and continuous improvement to visualize and manage project tasks.
+
+**Limiting Work-in-Progress**: Ensuring a balanced workload and maximizing efficiency in project execution.
+
+**Promoting Continuous Improvement**: Kanban boards facilitate order in daily work and support agile and DevOps teams in delivering the right amount of work effectively.
+
+### CRISP-DM Process Implementation:
+The CRISP-DM process in this project is organized into sprints, each containing Epics corresponding to CRISP-DM tasks. These Epics are further divided into tasks, progressing through stages such as To Do, In Progress, and Review as the workflow advances. They can be found in each User Story's label section.
+
+**See this project's kanban board: [Predict Pizza...or not](https://github.com/KrystalCoding/pizza-not-pizza)**
 
 [Back to top](#table-of-contents)
 
 ## Bugs
 
 ### Fixed Bug
+During the fine-tuning phase of our "Pizza vs. Not Pizza" image classification model, we encountered critical issues that significantly impacted the model's performance.
 
-While fine-tuning our "Pizza vs. Not Pizza" image classification model, we encountered a critical bug that was hindering the model's performance.
+- **Description**: The bug surfaced as the model's training process consistently stalled, exhibiting erratic validation accuracy and excessive loss values. Despite multiple attempts to enhance the model, it became evident that crucial adjustments were needed to facilitate effective learning.
 
-- Description: During the iterative process of adjusting hyperparameters and model architecture, we encountered a persistent bug. The bug manifested as the model's training process stalling with erratic validation accuracy and excessive loss values. Despite our efforts to improve the model, it was clear that something needed to be fixed to make it learn effectively.
+- **Bug Analysis**: A thorough analysis revealed several contributing factors to the bug. The batch sizes initially oscillated between being too small and too large, causing instability during training. Additionally, the model's architecture, specifically the number of dense layers, was suboptimal for the given classification task. The absence of dropout layers further exacerbated overfitting, collectively hindering the model's training progress.
 
-- Bug Analysis: After in-depth analysis, we identified several issues contributing to the bug. The batch sizes we used were initially too small and then too large, causing instability during training. Additionally, the model architecture, specifically the number of dense layers, was not optimized for the given task. Lack of dropout layers also led to overfitting. These factors combined to impede the model's training progress.
+- **Fix/Workaround**: To rectify the bug, we implemented the following adjustments:
 
-Fix/Workaround: To address the bug, we implemented several adjustments:
+    - **Adjust Batch Size**: We significantly increased and then moderately decreased the batch size, enhancing training stability.
+    - **Adjusted Dense Layers**: The number and size of dense layers were reconfigured to better suit the complexity of the classification task.
+    - **Added Dropout Layers**: Dropout layers were introduced at critical points in the architecture to mitigate overfitting.
+    - **Fine-Tuned Hyperparameters**: Careful adjustments to hyperparameters, such as reducing the learning rate, were made to improve overall training dynamics.
 
-- Adjust Batch Size: We first significantly increased and then mildly decreased the batch size, enhancing the model's stability during training.
-- Adjusted Dense Layers: We reconfigured the number and size of dense layers in the model to better suit the complexity of the classification task.
-- Added Dropout Layers: To mitigate overfitting, we introduced dropout layers at critical points in the architecture.
-- Fine-Tuned Hyperparameters: We carefully fine-tuned other hyperparameters such as learning rate to improve training dynamics.
-These fixes collectively resolved the bug and allowed the model to train effectively, ultimately resulting in improved validation accuracy and reduced loss.
+These fixes collectively addressed the bug, enabling the model to train effectively, resulting in improved validation accuracy and reduced loss.
 
-This bug fix was a pivotal step in optimizing our "Pizza vs. Not Pizza" image classification model to meet our project's business requirements.
+**Specific Changes After Fix**:
+
+- **Batch Size***: Adjusted to 16 from previous values of 35, 10, or 20.
+- **Patience**: Changed from 3 to 5.
+- **Dropout Layers**: Simplified from two layers with L2 regularization to one.
+- **Learning Rate**: Modified from 0.001 to 0.0001.
+- **Epochs**: Reduced from 25 to 10 and finally to 5.
+
+This bug fix marked a pivotal step in optimizing our "Pizza vs. Not Pizza" image classification model to align with the project's business requirements.
+
 [Back to top](#table-of-contents)
 
 ## Unfixed Bug
 
-Images producing false predictions
+Despite the functionality for pagination in my code and the Streamlit dashboard platform, a limitation arises when multiple users attempt to upload more than three images, resulting in overloading and system crashes. 
 
-![pizza/not pizza](INSERT IMAGE)
+This issue may be attributed to the inherent constraints of free services and requires resolution and mitigation measures to be implemented on their end.
 
-- ##  
-     - __Description__ : The above image, despite looking like pizza/not being pizza was predicted incorrectly. 
-     - __Bug__: The problem problem problem. The background being the same colour could be misleading as the model is not able to clearly detect the pizza shape. 
-     - __Fix/Workaround__: The model needs further tuning.
-
-     [Back to top](#table-of-contents)
+[Back to top](#table-of-contents)
 
 ## Deployment
-The project is coded and hosted on GitHub and deployed with [Heroku](https://www.heroku.com/). 
+The project is managed, version-controlled, and hosted on GitHub, and the deployment is facilitated through [Heroku](https://www.heroku.com/).
+Access the live Pizza Predictor app via this [link](https://pizza-detector-0540d49673e2.herokuapp.com/).
 
-### Creating the Heroku app 
-The steps needed to deploy this projects are as follows:
+### Heroku App Creation Steps 
+1. Create a `requirement.txt` file in GitHub, detailing the program's dependencies for Heroku to interpret.
+<details><summary>See Image</summary>
+<img src="assets/deployment/account-create.PNG">
+</details>
 
-1. Create a `requirement.txt` file in GitHub, for Heroku to read, listing the dependencies the program needs in order to run.
-2. Set the `runtime.txt` Python version to a Heroku-20 stack currently supported version.
-3. `push` the recent changes to GitHub and go to your [Heroku account page](https://id.heroku.com/login) to create and deploy the app running the project. 
-3. Chose "CREATE NEW APP", give it a unique name, and select a geographical region. 
-4. Add  `heroku/python` buildpack from the _Settings_ tab.
-5. From the _Deploy_ tab, chose GitHub as deployment method, connect to GitHub and select the project's repository. 
-6. Select the branch you want to deploy, then click Deploy Branch.
-7. Click to "Enable Automatic Deploys " or chose to "Deploy Branch" from the _Manual Deploy_ section. 
-8. Wait for the logs to run while the dependencies are installed and the app is being built.
-9. The mock terminal is then ready and accessible from a link similar to `https://your-projects-name.herokuapp.com/`
-10. If the slug size is too large then add large files not required for the app to the `.slugignore` file.
+2. Ensure the presence of a Procfile in the main directory with the line `web: sh setup.sh && streamlit run app.py`
+<details><summary>See Image</summary>
+<img src="assets/deployment/account-create.PNG">
+</details>
+
+3. Execute `heroku stack:set heroku-20 -a pizza-detector` to set the stack to heroku-20.
+<details><summary>See Image</summary>
+<img src="assets/deployment/account-create.PNG">
+</details>
+
+4. `Push` the recent changes to GitHub and proceed to your [Heroku account page](https://id.heroku.com/login) to create and deploy the app running the project.
+<details><summary>See Image</summary>
+<img src="assets/deployment/account-create.PNG">
+</details>
+
+5. Opt for "CREATE NEW APP," assign a unique name, and select a geographical region.
+<details><summary>See Image</summary>
+<img src="assets/deployment/account-create.PNG">
+</details>
+
+6. In the "Deploy" tab, under "Deployment method," select "GitHub," initiating GitHub authorization through a popup.
+<details><summary>See Image</summary>
+<img src="assets/deployment/connect-to-github.PNG">
+</details> 
+
+7. Choose the branch for deployment and click "Deploy Branch."
+<details><summary>See Image</summary>
+<img src="assets/deployment/connect-repo.PNG">
+</details>
+
+8. Opt for "Enable Automatic Deploys" or confirm that "main" is the selected branch for deployment and click "Deploy Branch" in the _Manual Deploy_ section.
+<details><summary>See Image</summary>
+<img src="assets/deployment/connect-repo.PNG">
+</details>
+
+9. Await the logs to run, installing dependencies, and building the app. You can view the build log while in progress to watch for any errors.
+<details><summary>See Image</summary>
+<img src="assets/deployment/deploy.PNG">
+</details>
+
+10. The most common problem in deploying a ml pipeline is that the slug size may exceed the limit (500mb for a free account), include large unnecessary files (e.g., Jupyter notebooks, README.md, and training/test datasets) in the`.slugignore` file.
+<details><summary>See Image</summary>
+<img src="assets/deployment/deploy.PNG">
+</details>
+
+11. The mock terminal becomes accessible via a link similar to `https://your-projects-name.herokuapp.com/`
+
+12. Click "Open App" to access the deployed application.
+<details><summary>See Image</summary>
+<img src="assets/deployment/deploy.PNG">
+</details>
 
 [Back to top](#table-of-contents)
    
 ### Forking the Repository
 
-- By forking this GitHub Repository you make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original repository. The steps to fork the repository are as follows:
-    - Locate the [GitHub Repository](https://github.com/KrystalCoding/pizza-not-pizza) of this project and log into your GitHub account. 
-    - Click on the "Fork" button, on the top right of the page, just above the "Settings". 
-    - Decide where to fork the repository (your account for instance)
-    - You now have a copy of the original repository in your GitHub account.
+By forking this GitHub Repository, you create a duplicate of the original repository in your GitHub account. This allows you to explore and make modifications without impacting the original repository. Here are the steps to fork the repository:
+1. Visit the [GitHub Repository](https://github.com/KrystalCoding/pizza-not-pizza) for this project and log in to your GitHub account.
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/deploy.PNG">
+    </details>
+2. Click on the "Fork" button located at the top right of the page, just above "Settings."
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/deploy.PNG">
+    </details>
+3. Choose where to fork the repository (e.g., your GitHub account).
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/deploy.PNG">
+    </details>
+4. Congratulations! You now possess a copy of the original repository in your GitHub account.
 
 [Back to top](#table-of-contents)
 
 ### Making a local clone
 
-- Cloning a repository pulls down a full copy of all the repository data that GitHub.com has at that point in time, including all versions of every file and folder for the project. The steps to clone a repository are as follows:
-    - Locate the [GitHub Repository](https://github.com/KrystalCoding/pizza-not-pizza) of this project and log into your GitHub account. 
-    - Click on the "Code" button, on the top right of your page.
-    - Chose one of the available options: Clone with HTTPS, Open with Git Hub desktop, Download ZIP. 
-    - To clone the repository using HTTPS, under "Clone with HTTPS", copy the link.
-    - Open Git Bash. [How to download and install](https://phoenixnap.com/kb/how-to-install-git-windows).
-    - Chose the location where you want the repository to be created. 
-    - Type:
-    ```
-    $ git clone https://git.heroku.com/pizza-to-be-or-not-to-be.git
-    ```
-    - Press Enter, and wait for the repository to be created.
-    - Click [Here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop) for a more detailed explanation. 
+Cloning a repository allows you to download a complete copy of all the data, including every version of each file and folder in the project. Here's a step-by-step guide on how to clone a repository:
+1. Visit the [GitHub Repository](https://github.com/KrystalCoding/pizza-not-pizza) for this project and log in to your GitHub account.
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/deploy.PNG">
+    </details>
+2. Click on the "Code" button located at the top right of the page.
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/deploy.PNG">
+    </details>
+3. Choose one of the available options: "Clone with HTTPS," "Open with GitHub Desktop," or "Download ZIP."
+4. To clone the repository using HTTPS, copy the provided link under "Clone with HTTPS."
+5. Open Git Bash. (Instructions on how to download and install Git on Windows can be found[here](https://phoenixnap.com/kb/how-to-install-git-windows)).
+6. Select the location where you want the repository to be created.
+7. Type `git clone` followed by pasting the URL from your clipboard.
+- Press Enter and wait for the repository to be created.
 
-__You can find the live link to the site here: [Pizza: To Be or Not To Be]()__
+For a more detailed explanation, click [here](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository#cloning-a-repository-to-github-desktop).
+
+__You can find the live link to the site here: [Pizza Detector](https://pizza-detector-0540d49673e2.herokuapp.com/)__
 
 [Back to top](#table-of-contents)
 
 ## Technologies used
 
 ### Platforms
-- [Heroku](https://en.wikipedia.org/wiki/Heroku) To deploy this project
-- [Jupiter Notebook](https://jupyter.org/) to edit code for this project
-- [Kaggle](https://www.kaggle.com/) to download datasets for this project
-- [GitHub](https://github.com/) to store the project code after being pushed from Gitpod.
-- [Gitpod](https://www.gitpod.io/) Dashboard was used to write the code and its terminal to 'commit' to GitHub and 'push' to GitHub Pages.
-- [Codeanywhere](https://app.codeanywhere.com/) is the crossplatform cloud IDE used to run Jupyter notebooks and host until pushed to GitHub.
+| Platform          | Purpose                                                        |
+|-------------------|----------------------------------------------------------------|
+| [Heroku](https://en.wikipedia.org/wiki/Heroku)            | Deploying this project                                         |
+| [Jupyter Notebook](https://jupyter.org/)  | Editing code for this project                                  |
+| [Kaggle](https://www.kaggle.com/)            | Downloading datasets for this project                          |
+| [GitHub](https://github.com/)            | Storing the project code after being pushed from Gitpod        |
+| [Gitpod](https://www.gitpod.io/)            | Writing the code and using its terminal to 'commit' to GitHub and 'push' to GitHub Pages |
+| [Codeanywhere](https://app.codeanywhere.com/)      | Crossplatform cloud IDE used to run Jupyter notebooks and host until pushed to GitHub |
+
 
 ### Languages
 - [Python](https://www.python.org/)
 - [Markdown](https://en.wikipedia.org/wiki/Markdown)
   
 ### Main Data Analysis and Machine Learning Libraries
-<pre>
-- tensorflow-cpu 2.6.0  used for creating the model
-- numpy 1.19.2          used for converting to array 
-- scikit-learn 0.24.2   used for evaluating the model
-- streamlit 0.85.0      used for creating the dashboard
-- pandas 1.1.2          used for creating/saving as dataframe
-- matplotlib 3.3.1      used for plotting the set's distribution
-- keras 2.6.0           used for setting model's hyperparamters
-- plotly 5.12.0         used for plotting the model's learning curve 
-- seaborn 0.11.0        used for plotting the model's confusion matrix
-</pre>
+| Library           | Version | Purpose                                               |
+|-------------------|---------|-------------------------------------------------------|
+| `tensorflow-cpu`    | 2.6.0   | Creating the model                                    |
+| `numpy`             | 1.19.2  | Converting to array                                   |
+| `scikit-learn`      | 0.24.2  | Evaluating the model                                  |
+| `streamlit`         | 0.85.0  | Creating the dashboard                               |
+| `pandas`            | 1.1.2   | Creating/saving as dataframe                          |
+| `matplotlib`        | 3.3.1   | Plotting the set's distribution                        |
+| `keras`             | 2.6.0   | Setting model's hyperparameters                       |
+| `plotly`            | 4.12.0  | Plotting the model's learning curve                   |
+| `seaborn`           | 0.11.0  | Plotting the model's confusion matrix                |
+| `protobuf`          | 3.20    | Efficient data interchange between systems            |
+| `altair`         |  < 5      | Creating interactive visualizations and additional plotting or charting capabilities |
+| `pillow`        | < 10      | Python Imaging Library used for image-related tasks within the project, such as loading or processing images |
+
 
 [Back to top](#table-of-contents)
 
 ## Credits
 
 ### Content
-- The pizza-not-pizza dataset was linked from [Kaggle](https://www.kaggle.com/code/rasikagurav/pizza-or-not-pizza), created by [Rasika Gurav](https://www.kaggle.com/rasikagurav)
+- The pizza-not-pizza dataset was linked from [Kaggle](https://www.kaggle.com/datasets/carlosrunner/pizza-not-pizza), created by [Carlos Runner](https://www.kaggle.com/carlosrunner)
 
 - The [CRISP DM](https://www.datascience-pm.com/crisp-dm-2/) steps adopted from [Introduction to CRISP-DM](https://www.ibm.com/docs/en/spss-modeler/saas?topic=guide-introduction-crisp-dm) articles from IBM.
-
-### Media
-- The banner image is from [](), the lettering colour is []()
 
 ### Code
 
@@ -683,13 +758,13 @@ __You can find the live link to the site here: [Pizza: To Be or Not To Be]()__
 
 ### Formatting
 
-- Some of the graphs and  Dashboard format were inspired by this [GitHub repository](https://github.com/cla-cif/Cherry-Powdery-Mildew-Detectorh) by fellow Code Institute student.
-- GitHub README isnpired formatting by [ocassidydev](ttps://github.com/ocassidydev/mushroom-safety).
+- Some of the README format was inspired by this GitHub repository: [Cherry-Powdery-Mildew-Detector](https://github.com/cla-cif/Cherry-Powdery-Mildew-Detector).
+- Another GitHub README by fellow student, ocassidydev was used for inspiration: [Mushroom Safety](ttps://github.com/ocassidydev/mushroom-safety).
 
 ### Acknowledgements
 
 Thanks to [Code Institute](https://codeinstitute.net/global/) and my one-off session mentor Mo Shami. 
 
-### Deployed version at [cherry-powdery-mildew-detector.herokuapp.com]()
+### Click to view eployed version: [here](https://pizza-detector-0540d49673e2.herokuapp.com/)
 
 [Back to top](#table-of-contents)
