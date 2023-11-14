@@ -690,6 +690,12 @@ A kanban board is an agile project management tool designed to help visualize wo
 
 - **Process Model**: Provides a comprehensive view of the data mining life cycle.
 
+<details><summary>See Image</summary>
+<img src="assets/crisp_dm.png">
+</details>
+
+<br>
+
 **Source**: [IBM - crisp overview](https://www.ibm.com/docs/it/spss-modeler/saas?topic=dm-crisp-help-overview)
 
 <br>
@@ -703,10 +709,20 @@ This repository employs the GitHub Kanban Board to document and visualize the CR
 
 **Promoting Continuous Improvement**: Kanban boards facilitate order in daily work and support agile and DevOps teams in delivering the right amount of work effectively.
 
+<details><summary>See Image</summary>
+<img src="assets/kanban.png">
+</details>
+
 <br>
 
 ### CRISP-DM Process Implementation:
 The CRISP-DM process in this project is organized into sprints, each containing Epics corresponding to CRISP-DM tasks. These Epics are further divided into tasks, progressing through stages such as To Do, In Progress, and Review as the workflow advances. They can be found in each User Story's label section.
+
+<details><summary>See Image</summary>
+<img src="assets/epic.png">
+</details>
+
+<br>
 
 **See this project's kanban board: [Predict Pizza...or not](https://github.com/KrystalCoding/pizza-not-pizza)**
 
@@ -769,70 +785,58 @@ Access the live Pizza Predictor app via this [link](https://pizza-detector-0540d
 ### Heroku App Creation Steps 
 1. Create a `requirement.txt` file in GitHub, detailing the program's dependencies for Heroku to interpret.
     <details><summary>See Image</summary>
-    <img src="assets/deployment/account-create.PNG">
+    <img src="assets/requirements_txt.png">
     </details>
 
     <br>
 
 2. Ensure the presence of a Procfile in the main directory with the line `web: sh setup.sh && streamlit run app.py`
     <details><summary>See Image</summary>
-    <img src="assets/deployment/account-create.PNG">
+    <img src="assets/procfile.png">
     </details>
 
     <br>
 
 3. Execute `heroku stack:set heroku-20 -a pizza-detector` to set the stack to heroku-20.
-    <details><summary>See Image</summary>
-    <img src="assets/deployment/account-create.PNG">
-    </details>
-
-    <br>
+    - Find out more about why we used this version [here](https://devcenter.heroku.com/articles/heroku-20-stack).
 
 4. `Push` the recent changes to GitHub and proceed to your [Heroku account page](https://id.heroku.com/login) to create and deploy the app running the project.
-    <details><summary>See Image</summary>
-    <img src="assets/deployment/account-create.PNG">
-    </details>
+    - Find out more about creating and pushing to a github repository [here](https://circleci.com/blog/pushing-a-project-to-github/?psafe_param=1&utm_source=google&utm_medium=sem&utm_campaign=sem-google-dg--emea-en-dsa-tCPA-auth-nb&utm_term=g_-_c__dsa_&utm_content=&gclid=CjwKCAiA0syqBhBxEiwAeNx9N4t-DQQqbq7OtZZbVAvkk6tN0061WirlYUy7MK6IvBb6XVttUsNYVBoCg9oQAvD_BwE).
 
-    <br>
 
 5. Opt for "CREATE NEW APP," assign a unique name, and select a geographical region.
     <details><summary>See Image</summary>
-    <img src="assets/deployment/account-create.PNG">
+    <img src="assets/heroku_create_app.png">
     </details>
 
     <br>
 
 6. In the "Deploy" tab, under "Deployment method," select "GitHub," initiating GitHub authorization through a popup.
     <details><summary>See Image</summary>
-    <img src="assets/deployment/connect-to-github.PNG">
+    <img src="assets/heroku_github.png">
     </details> 
 
     <br>
 
 7. Choose the branch for deployment and click "Deploy Branch."
-    <details><summary>See Image</summary>
-    <img src="assets/deployment/connect-repo.PNG">
+   <details><summary>See Image</summary>
+    <img src="assets/heroku_connect_repo.png">
     </details>
 
     <br>
 
 8. Opt for "Enable Automatic Deploys" or confirm that "main" is the selected branch for deployment and click "Deploy Branch" in the _Manual Deploy_ section.
     <details><summary>See Image</summary>
-    <img src="assets/deployment/connect-repo.PNG">
+    <img src="assets/heroku_choose_branch.png">
     </details>
 
     <br>
 
 9. Await the logs to run, installing dependencies, and building the app. You can view the build log while in progress to watch for any errors.
-    <details><summary>See Image</summary>
-    <img src="assets/deployment/deploy.PNG">
-    </details>
-
-    <br>
 
 10. The most common problem in deploying a ml pipeline is that the slug size may exceed the limit (500mb for a free account), include large unnecessary files (e.g., Jupyter notebooks, README.md, and training/test datasets) in the`.slugignore` file.
     <details><summary>See Image</summary>
-    <img src="assets/deployment/deploy.PNG">
+    <img src="assets/slugignore.png">
     </details>
 
     <br>
@@ -841,7 +845,7 @@ Access the live Pizza Predictor app via this [link](https://pizza-detector-0540d
 
 12. Click "Open App" to access the deployed application.
     <details><summary>See Image</summary>
-    <img src="assets/deployment/deploy.PNG">
+    <img src="assets/heroku_open_app.png">
     </details>
 
     <br>
@@ -856,23 +860,15 @@ Access the live Pizza Predictor app via this [link](https://pizza-detector-0540d
 
 By forking this GitHub Repository, you create a duplicate of the original repository in your GitHub account. This allows you to explore and make modifications without impacting the original repository. Here are the steps to fork the repository:
 1. Visit the [GitHub Repository](https://github.com/KrystalCoding/pizza-not-pizza) for this project and log in to your GitHub account.
-    <details><summary>See Image</summary>
-    <img src="assets/deployment/deploy.PNG">
-    </details>
 
-    <br>
 2. Click on the "Fork" button located at the top right of the page, just above "Settings."
     <details><summary>See Image</summary>
-    <img src="assets/deployment/deploy.PNG">
+    <img src="assets/github_fork.png">
     </details>
 
     <br>
 3. Choose where to fork the repository (e.g., your GitHub account).
-    <details><summary>See Image</summary>
-    <img src="assets/deployment/deploy.PNG">
-    </details>
 
-    <br>
 4. Congratulations! You now possess a copy of the original repository in your GitHub account.
 
 ---
@@ -885,14 +881,10 @@ By forking this GitHub Repository, you create a duplicate of the original reposi
 
 Cloning a repository allows you to download a complete copy of all the data, including every version of each file and folder in the project. Here's a step-by-step guide on how to clone a repository:
 1. Visit the [GitHub Repository](https://github.com/KrystalCoding/pizza-not-pizza) for this project and log in to your GitHub account.
-    <details><summary>See Image</summary>
-    <img src="assets/deployment/deploy.PNG">
-    </details>
 
-    <br>
 2. Click on the "Code" button located at the top right of the page.
     <details><summary>See Image</summary>
-    <img src="assets/deployment/deploy.PNG">
+    <img src="assets/github_clone.png">
     </details>
 
     <br>
