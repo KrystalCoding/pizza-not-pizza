@@ -215,8 +215,6 @@ In our learning curve plots, we look for the right fit of the learning algorithm
 
 <br>
 
-<br>
-
 **2. Observation**
 
 Our experimentation in the pizza-not-pizza project involved various model configurations and hyperparameter adjustments. We initiated the process with a custom model that featured three convolutional layers, max-pooling, and dense layers. This model was trained with a batch size of 20 for 25 epochs. However, we observed that the custom model did not achieve the desired accuracy, and the loss did not decrease significantly during training. It struggled to capture the intricate features that distinguish pizza from non-pizza images.
@@ -260,7 +258,7 @@ Encouraged by this initial progress, we further refined our VGG16-based model. W
 In order to reduce overfitting, we set the batch size to 16, reduced the two dense layers down to only one simplified one without the l2 parameter, set the patience from 3 to 5, changed the learning rate from 0.001 to 0.0001, and set the epochs to 5.
 
 <details><summary>See Image</summary>
-<img src="">
+<img src="assets/final_model.png">
 </details>
 <details><summary>See Image</summary>
 <img src="assets/vgg16_model_accuracy_3.PNG">
@@ -338,7 +336,7 @@ The VGG16 model is a convolutional neural network with 13 convolutional layers a
 <img src="assets/final_model_evaluation.png">
 </details>
 <details><summary>See Image</summary>
-<img src="VGG16 Model 3 (again)">
+<img src="assets/final_model.png">
 </details>
 
 <br>
