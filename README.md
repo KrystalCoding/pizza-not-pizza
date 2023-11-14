@@ -14,14 +14,14 @@
 11. [Technologies used](#technologies-used)
 12. [Credits](#credits)
 
-### Deployed version at ["Pizza Predictor"](https://pizza-detector-0540d49673e2.herokuapp.com/)
+### Live Pizza Predictor can be found [here](https://pizza-detector-0540d49673e2.herokuapp.com/)
 
 ## Dataset Content
 
-The dataset contains 983 featured photos of pizza variations, as well as 983 photos of food that is not pizza. This client is particularly concerned about identifying pizza as it is their flagship product. The dataset is sourced from [Kaggle](https://www.kaggle.com/code/rasikagurav/pizza-or-not-pizza/input).
+The dataset contains 983 featured photos of pizza variations, as well as 983 photos of food that is not pizza. This client is particularly concerned about identifying pizza as it is their flagship product. The dataset is sourced from [Kaggle](https://www.kaggle.com/datasets/carlosrunner/pizza-not-pizza).
 
 <details><summary>See Image</summary>
-<img src="KAGGLE">
+<img src="assets/kaggle.png">
 </details>
 
 ## Business Requirements
@@ -65,8 +65,12 @@ Business Requirements for Pizza vs. Not-Pizza Image Classification System:
 3. **Hypothesis** (System Efficiency and Response): The Project's Success Relies on Accurate Pizza Detection and Efficient System Response.  
    - __Validation__: Assess system's real-time processing and scalability for efficient image classifications.
 
+<br>
+
 ### Hypothesis 1
 > Pizza presence can be accurately identified by analyzing the shape and toppings within images.
+
+<br>
 
 **1. Introduction**
 
@@ -80,11 +84,11 @@ When working with an image dataset, the crucial step of normalizing the images b
 
 To normalize an image, you need to calculate the **mean** and **standard deviation** of the entire dataset. These values are calculated separately for each color channel (red, green, and blue in the case of RGB images). The calculation involves considering four dimensions of an image: batch size (number of images), number of channels (3 for RGB), height, and width. Since it's impractical to load the entire dataset into memory, the calculation is done on small batches of images, making it a non-trivial task.
 
-<details><summary>See Image</summary>
-<img src="MEAN AND STANDARD">
-</details>
+---
 
 [Back to top](#table-of-contents)
+
+<br>
 
 **2. Observation**
 
@@ -93,6 +97,8 @@ To validate our hypothesis, we observed the following key characteristics:
 - Shape Analysis: Pizza images consistently display a circular and flat shape. This distinct feature can serve as a crucial discriminator in identifying pizzas.
 
 - Toppings Variation: The toppings on pizzas vary widely, providing additional cues for detection. These toppings, such as pepperoni, vegetables, or cheese, introduce unique textural and color patterns that can be learned by our model.
+
+<br>
 
 **3. Image Analysis**
 
@@ -106,26 +112,34 @@ In addressing business requirement, **Automated Pizza Detection**, we created an
 
 - Shape Comparison: A montage of pizza images clearly illustrates the uniform circular shape found in pizzas. In contrast, we created a montage of "not-pizza" images, which showcase diverse and irregular shapes. This striking difference serves as a foundation for differentiation.
 
-<details><summary>See Image</summary>
-<img src="PIZZA MONTAGE">
-</details>
-<details><summary>See Image</summary>
-<img src="NOT-PIZZA MONTAGE">
-</details>
+    <details><summary>See Image</summary>
+    <img src="assets/pizza_montage.png">
+    </details>
+    <details><summary>See Image</summary>
+    <img src="assets/not_pizza_montage.png">
+    </details>
+<br>
 
 - Toppings Diversity: Analyzing the average and variability in images, we noticed that pizzas tend to exhibit a more centered and circular pattern. In contrast, "not-pizza" images display a wider array of shapes and patterns, emphasizing the uniqueness of pizza toppings.
 
-<details><summary>See Image</summary>
-<img src="AVERAGE AND VARIABILITY FOURSOME">
-</details>
+    <details><summary>See Image</summary>
+    <img src="AVERAGE AND VARIABILITY FOURSOME">
+    </details>
+
+<br>
 
 - Averaging Images: Comparing the average pizza image to the average "not-pizza" image did not reveal any immediate and intuitive difference. This suggests that pizza detection relies on a combination of subtle features, including shape and toppings.
 
-<details><summary>See Image</summary>
-<img src="AVERAGES AND DIFFERENCE W BLACK 3RD">
-</details>
+    <details><summary>See Image</summary>
+    <img src="AVERAGES AND DIFFERENCE W BLACK 3RD">
+    </details>
+<br>
+
+---
 
 [Back to top](#table-of-contents)
+
+<br>
 
 **3. Conclusion**
 
@@ -136,15 +150,20 @@ Our model demonstrated its capacity to detect these subtle yet distinguishing fe
 - [Calculate mean and std of Image Dataset](https://iq.opengenus.org/calculate-mean-and-std-of-image-dataset/)
 - [Computing Mean & STD in Image Dataset](https://kozodoi.me/python/deep%20learning/pytorch/tutorial/2021/03/08/image-mean-std.html)
 
+---
+
 [Back to top](#table-of-contents)
 
----
+<br>
+
 ### Hypothesis 2
 > Exploring different model configurations will lead to improved **Prediction Accuracy**. The experimentation with various model configurations directly contributes to enhancing the accuracy of pizza detection, aligning with the overarching business requirement for accurate predictions.
 
 **User Story 5: Improved Model Accuracy**: The systematic exploration of different model configurations aims at improving accuracy, aligning with the user story requirement for continuous improvement and achieving higher accuracy in pizza detection.
 
 **User Story 6: Systematic Evaluation**: The evaluation of different network architectures, layers, activation functions, and hyperparameters exemplifies a systematic approach to model development, fulfilling the user story requirement for a methodical and informed exploration of configurations.
+
+<br>
 
 **1. Introduction**
 
@@ -156,9 +175,11 @@ In our pizza-not-pizza project, we face a classification problem. We aim to clas
 - **Loss**: It quantifies how bad the model's prediction is. A lower loss value indicates a better prediction.
 - **Accuracy**: Accuracy is the proportion of correct predictions made by the model.
 
-<details><summary>See Image</summary>
-<img src="MODEL OUTPUT SHOWING EPOCHS">
-</details>
+    <details><summary>See Image</summary>
+    <img src="MODEL OUTPUT SHOWING EPOCHS">
+    </details>
+
+    <br>
 
 In our learning curve plots, we look for the right fit of the learning algorithm, avoiding both overfitting and underfitting. A good fit is characterized by the following:
 
@@ -166,9 +187,13 @@ In our learning curve plots, we look for the right fit of the learning algorithm
 - The validation loss decreases (or accuracy increases) to a point of stability with a small gap compared to the training loss.
 - Continued training of a well-fitted model may lead to overfitting. This is why ML models usually have an [early stopping](https://en.wikipedia.org/wiki/Early_stopping) function utilized which interrupts the model's learning phase when it ceasing improving.
 
-<details><summary>See Image</summary>
-<img src="EARLY STOPPING CODE">
-</details>
+    <details><summary>See Image</summary>
+    <img src="EARLY STOPPING CODE">
+    </details>
+
+<br>
+
+<br>
 
 **2. Observation**
 
@@ -178,11 +203,15 @@ Our experimentation in the pizza-not-pizza project involved various model config
 <img src="OWN MODEL">
 </details>
 
+<br>
+
 As an alternative, we explored the pre-trained VGG16 model. By fine-tuning the top layers to adapt to our binary classification task of pizza detection, we achieved better results. With a batch size of 35 and training for only 5 epochs, this VGG16-based model displayed improved accuracy. It successfully captured nuanced patterns and features critical for distinguishing between pizza and not-pizza images. Moreover, the loss function showed consistent decreases, indicating better convergence.
 
 <details><summary>See Image</summary>
 <img src="VGG16 MODEL 1">
 </details>
+
+<br>
 
 Encouraged by this initial progress, we further refined our VGG16-based model. We reduced the batch size to 15 and incorporated additional layers, including dense layers, L2 regularization, and dropout layers. We set the batch size to 20. These modifications led to significant improvements in loss. However, we continued to grapple with accuracy, as this model was overfitted and could not make accurate predictions on previously unseen photos.
 
@@ -190,13 +219,19 @@ Encouraged by this initial progress, we further refined our VGG16-based model. W
 <img src="VGG16 Model 2">
 </details>
 
+<br>
+
 In order to reduce overfitting, we set the batch size to 16, reduced the two dense layers down to only one simplified one without the l2 parameter, set the patience from 3 to 5, changed the learning rate from 0.001 to 0.0001, and set the epochs to 5.
 
 <details><summary>See Image</summary>
 <img src="VGG16 Model 3">
 </details>
 
+<br>
+
 In summary, our experimentation revealed that the VGG16-based model, with fine-tuned top layers and additional modifications, exhibited potential in distinguishing pizza from not-pizza images. Despite these advancements, achieving high accuracy remained a challenge. Our primary focus in this experiment was to evaluate different model architectures and hyperparameters with the aim of enhancing classification performance for our specific problem.
+
+<br>
 
 **3. Conclusion**
 
@@ -206,36 +241,47 @@ The primary focus of our experiment was to evaluate different model architecture
 
 - Loss/Accuracy of our custom model:
 
-<details><summary>See Image</summary>
-<img src="OWN MODEL LOSS & ACCURACY PLOTS">
-</details>
+    <details><summary>See Image</summary>
+    <img src="OWN MODEL LOSS & ACCURACY PLOTS">
+    </details>
+
+    <br>
 
 - Loss/Accuracy of original VGG16 model:
 
-<details><summary>See Image</summary>
-<img src="VGG16 1 LOSS & ACCURACY PLOTS">
-</details>
+    <details><summary>See Image</summary>
+    <img src="VGG16 1 LOSS & ACCURACY PLOTS">
+    </details>
+
+    <br>
 
 - Loss/Accuracy of enhanced VGG16 model:
 
-<details><summary>See Image</summary>
-<img src="VGG16 2 LOSS & ACCURACY PLOTS">
-</details>
+    <details><summary>See Image</summary>
+    <img src="VGG16 2 LOSS & ACCURACY PLOTS">
+    </details>
+
+    <br>
 
 - Final and best model:
 
-<details><summary>See Image</summary>
-<img src="VGG16 3 LOSS & ACCURACY PLOTS">
-</details>
+    <details><summary>See Image</summary>
+    <img src="VGG16 3 LOSS & ACCURACY PLOTS">
+    </details>
+
+    <br>
 
 **Sources**:
 - [Backpropagation in Fully Convolutional Networks](https://towardsdatascience.com/backpropagation-in-fully-convolutional-networks-fcns-1a13b75fb56a#:~:text=Backpropagation%20is%20one%20of%20the,respond%20properly%20to%20future%20urges.) by [Giuseppe Pio Cannata](https://cannydatascience.medium.com/)
 - [How to use Learning Curves to Diagnose Machine Learning Model Performance](https://machinelearningmastery.com/learning-curves-for-diagnosing-machine-learning-model-performance/) by [Jason Brownlee](https://machinelearningmastery.com/about)
 - [Activation Functions: Comparison of Trends in Practice and Research for Deep Learning](https://arxiv.org/pdf/1811.03378.pdf) by *Chigozie Enyinna Nwankpa, Winifred Ijomah, Anthony Gachagan, and Stephen Marshall*
 
+---
+
 [Back to top](#table-of-contents)
 
----
+<br>
+
 ### Hypothesis 3 
 > The Project's Success Relies on Accurate Pizza Detection and Efficient System Response, addressing business requirement **Continuous Improvement**: Beyond accurate pizza detection, the project's success hinges on system efficiency, response time, and scalability. Validating this hypothesis ensures the system identifies pizzas accurately and meets operational needs.
 
@@ -243,9 +289,13 @@ The primary focus of our experiment was to evaluate different model architecture
 
 In the context of Hypothesis 3, system efficiency and response time serve as a form of visual differentiation. The system's quick and accurate distinction between pizza and non-pizza images contributes to enhanced visual differentiation, aligning with the goals of User Story 4.
 
+<br>
+
 **1. Introduction**
 
 In our pizza-not-pizza project, accuracy is crucial, but success transcends classification. It includes system efficiency and response time. We hypothesize that success relies on accurate pizza detection, real-time processing, and efficient handling of a large number of image classifications.
+
+<br>
 
 **2. Observation**
 
@@ -258,12 +308,17 @@ While our code can handle multiple user photo uploads, and Streamlit offers pagi
 <img src="PAGINATION">
 </details>
 
+<br>
+
 **3. Conclusion**
 
 The success of our pizza-not-pizza project extends beyond accurate pizza detection, incorporating system efficiency, response time, and scalability. By validating this hypothesis, we ensure the system identifies pizzas accurately while meeting the operational needs of our client.
 
+---
 
 [Back to top](#table-of-contents)
+
+<br>
 
 ## The rationale for the model
 
@@ -273,6 +328,8 @@ The VGG16 model is a convolutional neural network with 13 convolutional layers a
 <img src="VGG16 Model 3 (again)">
 </details>
 
+<br>
+
 ### The goal
 zer. Achieving the desired model architecture was a result of systematic trial and error.
 It's important to note that while the model we've arrived at may not be the absolute best, it represents the outcome of extensive testing and fine-tuning in alignment with our project goals.
@@ -281,7 +338,11 @@ Our primary aim was to develop a robust model that excels in its ability to pred
 
 Furthermore, we sought to maintain computational efficiency by striking a balance between neural network complexity and the number of trainable parameters. This optimization allowed us to achieve a model that can generalize effectively, maintain high accuracy, and minimize error, all while conserving computational resources.
 
+---
+
 [Back to top](#table-of-contents)
+
+<br>
 
 ### Configuring Model Hyperparameters
 
@@ -305,7 +366,11 @@ Furthermore, we sought to maintain computational efficiency by striking a balanc
 - [Maxpooling vs minpooling vs average pooling](https://medium.com/@bdhuma/which-pooling-method-is-better-maxpooling-vs-minpooling-vs-average-pooling-95fb03f45a9#:~:text=Average%20pooling%20method%20smooths%20out,lighter%20pixels%20of%20the%20image.) by 
 - [How ReLU and Dropout Layers Work in CNNs](https://www.baeldung.com/cs/ml-relu-dropout-layers)
 
+---
+
 [Back to top](#table-of-contents)
+
+<br>
 
 ### Hidden Layers
 
@@ -318,8 +383,6 @@ When designing hidden layers, two key decisions need attention:
 2. **Number of Neurons in Each Layer**: Striking a balance is crucial, aiming to have enough neurons to capture intricate features distinguishing pizza images without an excessive number that might lead to overfitting.
 
 In our project, Convolutional Layers handle feature extraction, while Fully Connected Layers make final classifications, each serving its purpose effectively.
-
-[Back to top](#table-of-contents)
 
 - **Convolutional Layers vs. Fully Connected Layers**:
   - **Convolutional Layers**: In our pizza detection model, these layers are specialized for image analysis and feature extraction using convolution. Sharing parameters significantly reduces the parameter count compared to Fully Connected Layers, making them essential for capturing intricate patterns in pizza images.
@@ -340,8 +403,11 @@ In summary, the choice to simplify the model by reducing the number of Dense lay
 **Source**: 
 - [Dense Layer vs convolutional layer](https://datascience.stackexchange.com/questions/85582/dense-layer-vs-convolutional-layer-when-to-use-them-and-how#:~:text=As%20known%2C%20the%20main%20difference,function%20based%20on%20every%20input.)
 
+---
+
 [Back to top](#table-of-contents)
 
+<br>
 
 ### Model Compilation
 
@@ -356,7 +422,11 @@ In summary, the choice to simplify the model by reducing the number of Dense lay
 - [Impact of Optimizers in Image Classifiers](https://towardsai.net/p/l/impact-of-optimizers-in-image-classifiers)
 - [Keras Accuracy Metrics](https://keras.io/api/metrics/accuracy_metrics/#:~:text=metrics.,with%20which%20y_pred%20matches%20y_true%20.)
 
+---
+
 [Back to top](#table-of-contents)
+
+<br>
 
 ### Model Training
 - **Dropout Rate**: A dropout rate of 0.5 is implemented to prevent overfitting, especially given the relatively limited number of training samples.
@@ -371,13 +441,15 @@ In summary, the choice to simplify the model by reducing the number of Dense lay
 
 - **Training**: The model is trained for 5 epochs with the defined parameters, utilizing the training and validation sets.
 
+---
+
 [Back to top](#table-of-contents)
+
+<br>
 
 ## The Rationale for Mapping Business Requirements to Data Visualizations and ML Tasks
 
 Our project revolves around meeting the business requirements of our client, PizzaPal, aiming to enhance its quality assurance process through innovative Machine Learning. The defined business requirements drive the development of a sophisticated system capable of swiftly detecting the presence of pizza in images.
-
-[Back to top](#table-of-contents)
 
 ### Business Requirement 1: Data Visualization 
 >The initial business requirement focuses on creating data visualizations to intuitively distinguish pizzas from non-pizzas. Each user story in this category corresponds to a specific ML task.
@@ -398,9 +470,11 @@ Our project revolves around meeting the business requirements of our client, Piz
 
 * Implementation: Development of an image montage feature.
 
-**Please refer to [Hypothesis 1](#hypothesis-1) for more details on why these visualizations are important.**
+---
 
 [Back to top](#table-of-contents)
+
+<br>
 
 ### Business Requirement 2: Classification
 >The second business requirement involves developing a classification system for accurate detection.
@@ -409,7 +483,11 @@ Our project revolves around meeting the business requirements of our client, Piz
 
 * Implementation: Creation of a machine learning model for instant evaluations on food images.
 
+---
+
 [Back to top](#table-of-contents)
+
+<br>
 
 ### Business Requirement 3: Report
 >The third business requirement centers on generating prediction reports for examined food images.
@@ -418,7 +496,11 @@ Our project revolves around meeting the business requirements of our client, Piz
 
 * Implementation: Integration of a feature for downloadable .csv reports.
 
+---
+
 [Back to top](#table-of-contents)
+
+<br>
 
 ## ML Business Case
 
@@ -431,49 +513,63 @@ Our dataset, sourced from Kaggle's "Pizza or Not Pizza," comprises 1966 tantaliz
 <img src="SUCCESSFUL PIZZA DETECTION">
 </details>
 
+<br>
+
+---
+
+[Back to top](#table-of-contents)
+
+<br>
+
 ## Dashboard Design (Streamlit App User Interface)
 
 ### Page 1: Quick Project Summary
 - Quick Project Summary:
     In this section, we provide an overview of the project, its objectives, and the importance of the Pizza-Not-Pizza image classification system. We highlight the business requirements and the dataset used for the project.
 
-<details><summary>See Image</summary>
-<img src="STREAMLIT SUMMARY">
-</details>
+    <details><summary>See Image</summary>
+    <img src="STREAMLIT SUMMARY">
+    </details>
 
-[Back to top](#table-of-contents)
+    <br>
 
-### Pizza Visualizer
+### Page 2: Pizza Visualizer
 This page focuses on visually differentiating pizza images from other types of food. We display the difference between average and variability images for pizza and not-pizza categories. We also present a comparison of average images and offer an image montage for a better visual understanding.
 
 <details><summary>See Image</summary>
 <img src="STREAMLIT VISUALIZER">
 </details>
 
+<br>
+
 - **Average Image Plot**: This plot displays the average image for both pizza and non-pizza categories. It helps the client visually differentiate between the two by showcasing the mean features present in each category. For instance, pizza images tend to show specific characteristics in the mean image, aiding in the identification of pizzas.
 
 - **Standard Deviation Plot**: The standard deviation plot exhibits the variation or noise present in pizza and non-pizza images. Higher variations in the standard deviation indicate diverse toppings or attributes in the images. It visually represents how pizza and non-pizza images differ in terms of features.
 
-<details><summary>See Image</summary>
-<img src="STREAMLIT 4x PLOT (again)">
-</details>
+    <details><summary>See Image</summary>
+    <img src="STREAMLIT 4x PLOT (again)">
+    </details>
+
+    <br>
 
 - **Difference Between Averages**: This plot visually compares the average images of pizza and non-pizza. While there might not be clear-cut patterns to distinguish between the two, the subtle differences in color and shape between the average pizza and non-pizza images are highlighted.
 
-<details><summary>See Image</summary>
-<img src="STREAMLIT 3x PLOT (again)">
-</details>
+    <details><summary>See Image</summary>
+    <img src="STREAMLIT 3x PLOT (again)">
+    </details>
+
+    <br>
 
 - **Image Montage**: The image montage feature creates a collection of images representing both pizza and non-pizza categories. It helps users observe multiple examples of each category, aiding in their ability to differentiate between the two.
 
-<details><summary>See Image</summary>
-<img src="IMAGE MONTAGE PIZZA">
-</details>
-<details><summary>See Image</summary>
-<img src="IMAGE MONTAGE NOT-PIZZA">
-</details>
+    <details><summary>See Image</summary>
+    <img src="IMAGE MONTAGE PIZZA">
+    </details>
+    <details><summary>See Image</summary>
+    <img src="IMAGE MONTAGE NOT-PIZZA">
+    </details>
 
-[Back to top](#table-of-contents)
+    <br>
 
 ### Page 3: Pizza Detection
 On this page, users can upload food images to obtain instant predictions about whether they contain pizza or not. We also provide a download link for sample pizza and not-pizza photos.
@@ -482,7 +578,13 @@ On this page, users can upload food images to obtain instant predictions about w
 <img src="STREAMLIT DETECTION">
 </details>
 
+<br>
+
+---
+
 [Back to top](#table-of-contents)
+
+<br>
   
 ### Page 4: Project Hypothesis and Validation
 In this section, we explore our hypothesis about distinguishing pizza and images which contain food that is not pizza, visually. We discuss image montages and various studies conducted during the project.
@@ -491,19 +593,29 @@ In this section, we explore our hypothesis about distinguishing pizza and images
 <img src="STREAMLIT HYPOTHESIS">
 </details>
 
+<br>
+
 - **Prediction Probability Plot**: This plot presents the prediction probabilities as percentages for each class (Pizza and Not-Pizza). It helps users understand the confidence level of the model's predictions. For instance, a higher pizza percentage indicates a stronger likelihood of the image containing pizza.
 
-<details><summary>See Image</summary>
-<img src="STREAMLIT PERCENTAGES">
-</details>
+    <details><summary>See Image</summary>
+    <img src="STREAMLIT PERCENTAGES">
+    </details>
+
+    <br>
 
 - **Prediction Result**: The prediction result indicates whether the image is classified as "Pizza" or "Not-Pizza" based on the model's evaluation. The accompanying percentages provide the likelihood of the image belonging to each category.
 
-<details><summary>See Image</summary>
-<img src="STREAMLIT PREDICTION">
-</details>
+    <details><summary>See Image</summary>
+    <img src="STREAMLIT PREDICTION">
+    </details>
+
+    <br>
+
+---
 
 [Back to top](#table-of-contents)
+
+<br>
 
 ### Page 5: ML Performance Metrics
 Here, we present metrics related to the project's performance, including the distribution of labels in the training and test sets. We showcase model training history in terms of accuracy and losses and provide general performance metrics on the test set.
@@ -512,33 +624,44 @@ Here, we present metrics related to the project's performance, including the dis
 <img src="STREAMLIT ML PERFORMANCE">
 </details>
 
+<br>
+
 - **Label Distribution Graph**: This plot illustrates the distribution of labels (Pizza and Not-Pizza) in the train, validation, and test datasets. It shows the frequency of each label in each dataset, helping users understand the dataset's composition.
 
-<details><summary>See Image</summary>
-<img src="SUCCESSFUL PIZZA DETECTION">
-</details>
+    <details><summary>See Image</summary>
+    <img src="SUCCESSFUL PIZZA DETECTION">
+    </details>
+
+    <br>
 
 - **Loss and Accuracy Plot**: This plot depicts the training progress over five epochs. Notable improvements in accuracy and reductions in loss are observed, indicating the model's ability to learn from the training data. Validation accuracy consistently increases, ensuring the model generalizes well to new data.
 
+    <details><summary>See Image</summary>
+    <img src="STREAMLIT LOSS AND ACCURACY">
+    </details>
 
-<details><summary>See Image</summary>
-<img src="STREAMLIT LOSS AND ACCURACY">
-</details>
+    <br>
 
 - **Generalized Performance on Test Set**: A summary of the model's performance on the test set. The model achieved a loss of 0.7276 and an accuracy of 0.8579. These metrics provide insights into how well the trained model performs on previously unseen data, validating its effectiveness in real-world scenarios.
 
-<details><summary>See Image</summary>
-<img src="STREAMLIT TEST SET RESULTS">
-</details>
+    <details><summary>See Image</summary>
+    <img src="STREAMLIT TEST SET RESULTS">
+    </details>
 
-[pizza-predictor.herokuapp.com](https://pizza-to-be-or-not-to-be.herokuapp.com/)
+<br>
+
+---
 
 [Back to top](#table-of-contents)
+
+<br>
 
 ## The CRISP-DM Process and Kanban Board
 CRISP-DM, or Cross-Industry Standard Process for Data Mining, is a well-established methodology guiding data mining projects. This process model outlines the typical phases of a project, the associated tasks within each phase, and the interconnections between these tasks.
 
 A kanban board is an agile project management tool designed to help visualize work, limit work-in-progress, and maximize efficiency (or flow). It can help both agile and DevOps teams establish order in their daily work. Kanban boards use cards, columns, and continuous improvement to help technology and service teams commit to the right amount of work, and get it done!
+
+<br>
 
 ### Key Aspects of CRISP-DM:
 - **Methodology Overview**: Describes the phases and tasks involved in a data mining project.
@@ -546,6 +669,8 @@ A kanban board is an agile project management tool designed to help visualize wo
 - **Process Model**: Provides a comprehensive view of the data mining life cycle.
 
 **Source**: [IBM - crisp overview](https://www.ibm.com/docs/it/spss-modeler/saas?topic=dm-crisp-help-overview)
+
+<br>
 
 ### Project Management with Kanban Board:
 This repository employs the GitHub Kanban Board to document and visualize the CRISP-DM process for the project Predict Pizza...or not. Utilizing the Kanban board enhances project management by:
@@ -556,12 +681,18 @@ This repository employs the GitHub Kanban Board to document and visualize the CR
 
 **Promoting Continuous Improvement**: Kanban boards facilitate order in daily work and support agile and DevOps teams in delivering the right amount of work effectively.
 
+<br>
+
 ### CRISP-DM Process Implementation:
 The CRISP-DM process in this project is organized into sprints, each containing Epics corresponding to CRISP-DM tasks. These Epics are further divided into tasks, progressing through stages such as To Do, In Progress, and Review as the workflow advances. They can be found in each User Story's label section.
 
 **See this project's kanban board: [Predict Pizza...or not](https://github.com/KrystalCoding/pizza-not-pizza)**
 
+---
+
 [Back to top](#table-of-contents)
+
+<br>
 
 ## Bugs
 
@@ -591,7 +722,11 @@ These fixes collectively addressed the bug, enabling the model to train effectiv
 
 This bug fix marked a pivotal step in optimizing our "Pizza vs. Not Pizza" image classification model to align with the project's business requirements.
 
+---
+
 [Back to top](#table-of-contents)
+
+<br>
 
 ## Unfixed Bug
 
@@ -599,7 +734,11 @@ Despite the functionality for pagination in my code and the Streamlit dashboard 
 
 This issue may be attributed to the inherent constraints of free services and requires resolution and mitigation measures to be implemented on their end.
 
+---
+
 [Back to top](#table-of-contents)
+
+<br>
 
 ## Deployment
 The project is managed, version-controlled, and hosted on GitHub, and the deployment is facilitated through [Heroku](https://www.heroku.com/).
@@ -607,63 +746,89 @@ Access the live Pizza Predictor app via this [link](https://pizza-detector-0540d
 
 ### Heroku App Creation Steps 
 1. Create a `requirement.txt` file in GitHub, detailing the program's dependencies for Heroku to interpret.
-<details><summary>See Image</summary>
-<img src="assets/deployment/account-create.PNG">
-</details>
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/account-create.PNG">
+    </details>
+
+    <br>
 
 2. Ensure the presence of a Procfile in the main directory with the line `web: sh setup.sh && streamlit run app.py`
-<details><summary>See Image</summary>
-<img src="assets/deployment/account-create.PNG">
-</details>
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/account-create.PNG">
+    </details>
+
+    <br>
 
 3. Execute `heroku stack:set heroku-20 -a pizza-detector` to set the stack to heroku-20.
-<details><summary>See Image</summary>
-<img src="assets/deployment/account-create.PNG">
-</details>
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/account-create.PNG">
+    </details>
+
+    <br>
 
 4. `Push` the recent changes to GitHub and proceed to your [Heroku account page](https://id.heroku.com/login) to create and deploy the app running the project.
-<details><summary>See Image</summary>
-<img src="assets/deployment/account-create.PNG">
-</details>
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/account-create.PNG">
+    </details>
+
+    <br>
 
 5. Opt for "CREATE NEW APP," assign a unique name, and select a geographical region.
-<details><summary>See Image</summary>
-<img src="assets/deployment/account-create.PNG">
-</details>
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/account-create.PNG">
+    </details>
+
+    <br>
 
 6. In the "Deploy" tab, under "Deployment method," select "GitHub," initiating GitHub authorization through a popup.
-<details><summary>See Image</summary>
-<img src="assets/deployment/connect-to-github.PNG">
-</details> 
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/connect-to-github.PNG">
+    </details> 
+
+    <br>
 
 7. Choose the branch for deployment and click "Deploy Branch."
-<details><summary>See Image</summary>
-<img src="assets/deployment/connect-repo.PNG">
-</details>
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/connect-repo.PNG">
+    </details>
+
+    <br>
 
 8. Opt for "Enable Automatic Deploys" or confirm that "main" is the selected branch for deployment and click "Deploy Branch" in the _Manual Deploy_ section.
-<details><summary>See Image</summary>
-<img src="assets/deployment/connect-repo.PNG">
-</details>
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/connect-repo.PNG">
+    </details>
+
+    <br>
 
 9. Await the logs to run, installing dependencies, and building the app. You can view the build log while in progress to watch for any errors.
-<details><summary>See Image</summary>
-<img src="assets/deployment/deploy.PNG">
-</details>
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/deploy.PNG">
+    </details>
+
+    <br>
 
 10. The most common problem in deploying a ml pipeline is that the slug size may exceed the limit (500mb for a free account), include large unnecessary files (e.g., Jupyter notebooks, README.md, and training/test datasets) in the`.slugignore` file.
-<details><summary>See Image</summary>
-<img src="assets/deployment/deploy.PNG">
-</details>
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/deploy.PNG">
+    </details>
+
+    <br>
 
 11. The mock terminal becomes accessible via a link similar to `https://your-projects-name.herokuapp.com/`
 
 12. Click "Open App" to access the deployed application.
-<details><summary>See Image</summary>
-<img src="assets/deployment/deploy.PNG">
-</details>
+    <details><summary>See Image</summary>
+    <img src="assets/deployment/deploy.PNG">
+    </details>
+
+    <br>
+
+---
 
 [Back to top](#table-of-contents)
+
+<br>
    
 ### Forking the Repository
 
@@ -672,17 +837,27 @@ By forking this GitHub Repository, you create a duplicate of the original reposi
     <details><summary>See Image</summary>
     <img src="assets/deployment/deploy.PNG">
     </details>
+
+    <br>
 2. Click on the "Fork" button located at the top right of the page, just above "Settings."
     <details><summary>See Image</summary>
     <img src="assets/deployment/deploy.PNG">
     </details>
+
+    <br>
 3. Choose where to fork the repository (e.g., your GitHub account).
     <details><summary>See Image</summary>
     <img src="assets/deployment/deploy.PNG">
     </details>
+
+    <br>
 4. Congratulations! You now possess a copy of the original repository in your GitHub account.
 
+---
+
 [Back to top](#table-of-contents)
+
+<br>
 
 ### Making a local clone
 
@@ -691,10 +866,14 @@ Cloning a repository allows you to download a complete copy of all the data, inc
     <details><summary>See Image</summary>
     <img src="assets/deployment/deploy.PNG">
     </details>
+
+    <br>
 2. Click on the "Code" button located at the top right of the page.
     <details><summary>See Image</summary>
     <img src="assets/deployment/deploy.PNG">
     </details>
+
+    <br>
 3. Choose one of the available options: "Clone with HTTPS," "Open with GitHub Desktop," or "Download ZIP."
 4. To clone the repository using HTTPS, copy the provided link under "Clone with HTTPS."
 5. Open Git Bash. (Instructions on how to download and install Git on Windows can be found[here](https://phoenixnap.com/kb/how-to-install-git-windows)).
@@ -706,11 +885,18 @@ For a more detailed explanation, click [here](https://help.github.com/en/github/
 
 __You can find the live link to the site here: [Pizza Detector](https://pizza-detector-0540d49673e2.herokuapp.com/)__
 
+---
+
 [Back to top](#table-of-contents)
+
+<br>
 
 ## Technologies used
 
 ### Platforms
+
+<br>
+
 | Platform          | Purpose                                                        |
 |-------------------|----------------------------------------------------------------|
 | [Heroku](https://en.wikipedia.org/wiki/Heroku)            | Deploying this project                                         |
@@ -720,10 +906,15 @@ __You can find the live link to the site here: [Pizza Detector](https://pizza-de
 | [Gitpod](https://www.gitpod.io/)            | Writing the code and using its terminal to 'commit' to GitHub and 'push' to GitHub Pages |
 | [Codeanywhere](https://app.codeanywhere.com/)      | Crossplatform cloud IDE used to run Jupyter notebooks and host until pushed to GitHub |
 
+---
+
+<br>
 
 ### Languages
 - [Python](https://www.python.org/)
 - [Markdown](https://en.wikipedia.org/wiki/Markdown)
+
+<br>
   
 ### Main Data Analysis and Machine Learning Libraries
 | Library           | Version | Purpose                                               |
@@ -742,7 +933,11 @@ __You can find the live link to the site here: [Pizza Detector](https://pizza-de
 | `pillow`        | < 10      | Python Imaging Library used for image-related tasks within the project, such as loading or processing images |
 
 
+---
+
 [Back to top](#table-of-contents)
+
+<br>
 
 ## Credits
 
@@ -751,20 +946,34 @@ __You can find the live link to the site here: [Pizza Detector](https://pizza-de
 
 - The [CRISP DM](https://www.datascience-pm.com/crisp-dm-2/) steps adopted from [Introduction to CRISP-DM](https://www.ibm.com/docs/en/spss-modeler/saas?topic=guide-introduction-crisp-dm) articles from IBM.
 
+<br>
+
 ### Code
 
 -  The template used for this project belongs to CodeInstitute - [GitHub](https://github.com/Code-Institute-Submissions) and [here is their website](https://codeinstitute.net/global/).
 - App pages for the Streamlit dashboard, data collection structure, and data visualization jupiter notebooks are from [Code Institute Walthrough Project](https://github.com/Code-Institute-Solutions/WalkthroughProject01) and where used as a backbone for this project.
 
+<br>
+
 ### Formatting
 
-- Some of the README format was inspired by this GitHub repository: [Cherry-Powdery-Mildew-Detector](https://github.com/cla-cif/Cherry-Powdery-Mildew-Detector).
+- Some of the README format and source links were taken from or inspired by this GitHub repository: [Cherry-Powdery-Mildew-Detector](https://github.com/cla-cif/Cherry-Powdery-Mildew-Detector).
 - Another GitHub README by fellow student, ocassidydev was used for inspiration: [Mushroom Safety](ttps://github.com/ocassidydev/mushroom-safety).
+
+<br>
 
 ### Acknowledgements
 
-Thanks to [Code Institute](https://codeinstitute.net/global/) and my one-off session mentor Mo Shami. 
+Thanks to [Code Institute](https://codeinstitute.net/global/) and my one-off session mentor Mo Shami.
+
+<br>
+
+---
 
 ### Click to view eployed version: [here](https://pizza-detector-0540d49673e2.herokuapp.com/)
 
+---
+
 [Back to top](#table-of-contents)
+
+<br>

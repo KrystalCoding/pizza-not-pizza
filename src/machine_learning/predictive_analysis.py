@@ -91,7 +91,7 @@ def load_model_and_predict(my_image, version):
         else 'Not-Pizza'
 
     st.write(
-        f"The predictive analysis indicates the sample contains "
+        f"The predictive analysis indicates the sample is "
         f"**{pred_class.lower()}**.\n\n"
         f"- Likelihood of being Pizza: {pizza_percentage:.2f}%\n"
         f"- Likelihood of being Not-Pizza: {not_pizza_percentage:.2f}%")

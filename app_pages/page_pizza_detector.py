@@ -25,9 +25,10 @@ def page_pizza_detector_body():
     None
     """
     st.success(
-        f"* You can download a set of pizza or not-pizza photos "
-        "for live prediction. "
-        f"You can download the images from "
+        f"* You may download a set of pizza or not-pizza photos "
+        "from the original dataset, or upload your own original "
+        "images for live prediction. "
+        f"You can download the dataset images from "
         "[here](https://www.kaggle.com/datasets/carlosrunner/pizza-not-pizza)."
     )
 
