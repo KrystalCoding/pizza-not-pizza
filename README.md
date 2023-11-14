@@ -970,7 +970,7 @@ __You can find the live link to the site here: [Pizza Detector](https://pizza-de
 ### Formatting
 
 - Some of the README format and source links were taken from or inspired by this GitHub repository: [Cherry-Powdery-Mildew-Detector](https://github.com/cla-cif/Cherry-Powdery-Mildew-Detector).
-- Another GitHub README by fellow student, ocassidydev was used for inspiration: [Mushroom Safety](ttps://github.com/ocassidydev/mushroom-safety).
+- Another GitHub README by fellow student, ocassidydev was used for inspiration: [Mushroom Safety](https://github.com/ocassidydev/mushroom-safety).
 
 <br>
 
@@ -982,7 +982,7 @@ Thanks to [Code Institute](https://codeinstitute.net/global/) and my one-off ses
 
 ---
 
-### Click to view eployed version: [here](https://pizza-detector-0540d49673e2.herokuapp.com/)
+### Click to view Deployed version: [here](https://pizza-detector-0540d49673e2.herokuapp.com/){:target="_blank"}.
 
 ---
 
