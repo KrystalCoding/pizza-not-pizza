@@ -31,6 +31,17 @@ def page_pizza_detector_body():
         "[here](https://www.kaggle.com/datasets/carlosrunner/pizza-not-pizza)."
     )
 
+    st.warning(
+    "⚠️ **Attention:** While the free service can experience occasional "
+    "overload, it may be best to limit your photo uploads to a maximum of 3 "
+    "at once. "
+    "Exceeding this limit could result in system disruptions. Kindly "
+    "consider this recommendation, understanding that the free service "
+    "imposes certain restrictions. Any inconvenience is regretted and is not "
+    "attributed to the code or the programmer."
+    )
+
+
     st.write("---")
 
     images_buffer = st.file_uploader(

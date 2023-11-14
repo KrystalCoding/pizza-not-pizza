@@ -5,10 +5,10 @@
 2. [Business Requirements](#business-requirements)
 3. [Hypothesis and validation](#hypothesis-and-validation)
 4. [Rationale for the model](#the-rationale-for-the-model)
-5. [Implementation of the Business Requirements](#the-rationale-to-map-the-business-requirements-to-the-data-visualizations-and-ml-tasks)
+5. [Implementation of the Business Requirements](#implementation-of-business-requirements)
 6. [ML Business case](#ml-business-case)
 7. [Dashboard design](#dashboard-design-streamlit-app-user-interface)
-8. [CRISP DM Process](#the-process-of-cross-industry-standard-process-for-data-mining)
+8. [CRISP-DM Process](#crisp-dm-process-implementation)
 9. [Bugs](#bugs)
 10. [Deployment](#deployment)
 11. [Technologies used](#technologies-used)
@@ -754,7 +754,7 @@ __You can find the live link to the site here: [Pizza Detector](https://pizza-de
 ### Code
 
 -  The template used for this project belongs to CodeInstitute - [GitHub](https://github.com/Code-Institute-Submissions) and [here is their website](https://codeinstitute.net/global/).
-- App pages for the Streamlit dashboard, data collection and data visualization jupiter notebooks are from [Code Institute Walthrough Project](https://github.com/Code-Institute-Solutions/WalkthroughProject01) and where used as a backbone for this project.
+- App pages for the Streamlit dashboard, data collection structure, and data visualization jupiter notebooks are from [Code Institute Walthrough Project](https://github.com/Code-Institute-Solutions/WalkthroughProject01) and where used as a backbone for this project.
 
 ### Formatting
 
